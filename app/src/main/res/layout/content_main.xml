@@ -37,6 +37,20 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/mvc_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/button_mvc"
+                android:textColor="@color/white"
+                android:textSize="21sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mvp_button" />
+
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/mvvm_button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -48,7 +62,7 @@
                 android:textSize="21sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/mvp_button" />
+                app:layout_constraintTop_toBottomOf="@+id/mvc_button" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/room_button"

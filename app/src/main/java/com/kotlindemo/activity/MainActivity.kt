@@ -10,6 +10,7 @@ import com.kotlindemo.activity.databinding2.DataBindingActivity2
 import com.kotlindemo.activity.lifecycle.LifeCycleActivity
 import com.kotlindemo.activity.livedata.LiveDataActivity
 import com.kotlindemo.activity.motion.MotionActivity
+import com.kotlindemo.activity.mvc.view.MVCDemoActivity
 import com.kotlindemo.activity.mvp.view.MVPDemoActivity
 import com.kotlindemo.activity.mvvm.QuotesActivity
 import com.kotlindemo.activity.retrofitdemo.RetrofitDemoActivity
@@ -48,6 +49,10 @@ class MainActivity : ParentActivity() {
         setSupportActionBar(toolbar)
 
         //textView?.text = "Say hello to Kotlin"
+
+        mvc_button.setOnClickListener {
+            startActivity<MVCDemoActivity>()
+        }
 
         mvp_button.setOnClickListener {
             startActivity<MVPDemoActivity>()
