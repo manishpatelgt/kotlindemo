@@ -19,8 +19,10 @@
     <string name="coroutine_activity_title">Coroutines Demo</string>
     <string name="motion_activity_title">Motion Layout Demo</string>
     <string name="retrofit_activity_title">ViewModel + LiveData + Retrofit Demo</string>
+    <string name="mvp_activity_title">MVP Demo</string>
 
     <string name="button_room">Android Room</string>
+    <string name="button_mvp">MVP</string>
     <string name="button_mvvm">MVVM</string>
     <string name="button_livedata">LiveData</string>
     <string name="button_lifecycle">LifeCycle</string>

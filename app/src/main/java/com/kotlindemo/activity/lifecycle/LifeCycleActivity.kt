@@ -24,8 +24,8 @@ class LifeCycleActivity : ParentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lifecycle)
-        setSupportActionBar(toolbar as Toolbar?)
-        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         Log.d(TAG, "Owner ON_CREATE")
         ProcessLifecycleOwner.get().lifecycle.addObserver(LifeCycleComponent())

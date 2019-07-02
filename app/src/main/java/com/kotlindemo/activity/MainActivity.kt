@@ -3,7 +3,6 @@ package com.kotlindemo.activity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.widget.Toolbar
 import com.kotlindemo.R
 import com.kotlindemo.activity.coroutines.CoroutinesActivity
 import com.kotlindemo.activity.databinding.DataBindingActivity
@@ -11,6 +10,7 @@ import com.kotlindemo.activity.databinding2.DataBindingActivity2
 import com.kotlindemo.activity.lifecycle.LifeCycleActivity
 import com.kotlindemo.activity.livedata.LiveDataActivity
 import com.kotlindemo.activity.motion.MotionActivity
+import com.kotlindemo.activity.mvp.view.MVPDemoActivity
 import com.kotlindemo.activity.mvvm.QuotesActivity
 import com.kotlindemo.activity.retrofitdemo.RetrofitDemoActivity
 import com.kotlindemo.activity.room.RoomActivity
@@ -45,11 +45,15 @@ class MainActivity : ParentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar as Toolbar?)
+        setSupportActionBar(toolbar)
 
         //textView?.text = "Say hello to Kotlin"
 
-        material_button.setOnClickListener {
+        mvp_button.setOnClickListener {
+            startActivity<MVPDemoActivity>()
+        }
+
+        room_button.setOnClickListener {
             startActivity<RoomActivity>()
         }
 

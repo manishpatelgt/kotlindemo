@@ -113,6 +113,11 @@
             android:label="@string/retrofit_activity_title"
             android:theme="@style/Theme.MyApp"></activity>
 
+        <activity
+            android:name=".activity.mvp.view.MVPDemoActivity"
+            android:label="@string/mvp_activity_title"
+            android:theme="@style/Theme.MyApp"></activity>
+
 
         <!--<activity
             android:name="com.facebook.flipper.android.diagnostics.FlipperDiagnosticActivity"

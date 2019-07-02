@@ -20,6 +20,7 @@ import java.util.concurrent.TimeUnit
 /**
  * Created by Manish Patel on 5/24/2019.
  */
+
 //https://blog.mindorks.com/mastering-kotlin-coroutines-in-android-step-by-step-guide
 //https://github.com/navi25/RetrofitKotlinDeferred
 //https://android.jlelse.eu/kotlin-coroutines-and-retrofit-e0702d0b8e8f
@@ -39,8 +40,8 @@ class CoroutinesActivity : ParentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_coroutines)
-        setSupportActionBar(toolbar as Toolbar?)
-        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         setupUI()
     }
 

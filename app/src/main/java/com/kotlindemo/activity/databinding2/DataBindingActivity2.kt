@@ -39,8 +39,8 @@ class DataBindingActivity2 : ParentActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_databinding_two_way)
         binding.lifecycleOwner = this
 
-        setSupportActionBar(toolbar as Toolbar?)
-        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         binding.data = weather
     }

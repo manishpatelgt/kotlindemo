@@ -22,7 +22,7 @@ class NewWordActivity : ParentActivity() {
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_word)
-        setSupportActionBar(toolbar as Toolbar?)
+        setSupportActionBar(toolbar)
 
         editWordView = findViewById(R.id.edit_word)
 

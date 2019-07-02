@@ -33,8 +33,8 @@ class DataBindingActivity : ParentActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_databinding)
         binding.lifecycleOwner = this
 
-        setSupportActionBar(toolbar as Toolbar?)
-        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         binding.myName = myName
         binding.presenter = Presenter()
