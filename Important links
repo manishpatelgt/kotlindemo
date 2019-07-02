@@ -1,0 +1,29 @@
+https://constraintlayout.com/layouts/relativelayout.html
+
+#MotionLayout
+https://proandroiddev.com/exploring-motionlayout-keycycle-b990d9cef5bf
+https://www.androidauthority.com/motionlayout-animations-android-apps-896717/
+https://www.thomaskioko.com/dancing-with-code-motionlayout/
+
+#Coroutines
+https://codinginfinite.com/kotlin-coroutines-best-practices-example/
+https://medium.com/androiddevelopers/coroutines-on-android-part-i-getting-the-background-3e0e54d20bb
+
+#Viewmodel + LiveData + Retrofit
+https://www.simplifiedcoding.net/android-viewmodel-using-retrofit/
+https://www.codementor.io/boonyakitpitak/calling-web-service-with-android-architecture-component-enparqrs4
+https://www.zoftino.com/android-livedata-examples
+https://stackoverflow.com/questions/54077592/kotlin-coroutines-handle-error-and-implementation
+https://codinginfinite.com/kotlin-coroutine-call-adapter-retrofit/
+
+#With Kotlin Couroutine in viewmodel
+https://android.jlelse.eu/coroutine-aware-viewmodel-6399b381bc4a
+https://medium.com/mindorks/use-viewmodelscope-for-less-boilerplate-code-with-coroutines-79c7fa19aa8f
+
+#App-Bundle
+https://www.raywenderlich.com/9043-android-app-bundles-getting-started
+
+#Flipper
+https://fbflipper.com/docs/getting-started.html#setup-your-android-app
+
+

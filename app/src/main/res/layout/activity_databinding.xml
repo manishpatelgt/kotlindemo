@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="myName"
+            type="com.kotlindemo.activity.databinding.MyName" />
+
+        <variable
+            name="presenter"
+            type="com.kotlindemo.activity.databinding.DataBindingActivity.Presenter" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        <TextView
+            android:id="@+id/name_text"
+            style="@style/NameStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/padding"
+            android:paddingEnd="@dimen/padding"
+            android:text="@={myName.name}"
+            android:textAlignment="center"
+            tools:text="Name" />
+
+        <TextView
+            android:id="@+id/nickname_text"
+            style="@style/NameStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/padding"
+            android:paddingEnd="@dimen/padding"
+            android:text="@={myName.nickname}"
+            android:visibility="@{myName.isNickNameEmpty ? View.GONE : View.VISIBLE}"
+            android:textAlignment="center"
+            tools:text="NickName" />
+
+
+        <EditText
+            android:id="@+id/nickname_edit"
+            style="@style/NameStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/what_is_your_nickname"
+            android:inputType="textPersonName"
+            android:paddingStart="@dimen/padding"
+            android:paddingEnd="@dimen/padding"
+            android:textAlignment="center" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/done_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/roboto"
+            android:gravity="center"
+            android:padding="10dp"
+            android:paddingStart="@dimen/padding"
+            android:paddingEnd="@dimen/padding"
+            android:text="@string/done"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="21sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/toast_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/roboto"
+            android:gravity="center"
+            android:onClick="@{(view)->presenter.showToast(view,myName)}"
+            android:padding="10dp"
+            android:paddingStart="@dimen/padding"
+            android:paddingEnd="@dimen/padding"
+            android:text="@string/toast"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="21sp" />
+
+        <ImageView
+            android:id="@+id/star_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/layout_margin"
+            android:contentDescription="@string/yellow_star"
+            android:paddingStart="@dimen/padding"
+            android:paddingEnd="@dimen/padding"
+            app:srcCompat="@android:drawable/btn_star_big_on" />
+
+        <ScrollView
+            android:id="@+id/bio_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/layout_margin"
+            android:paddingStart="@dimen/padding"
+            android:paddingEnd="@dimen/padding">
+
+            <TextView
+                android:id="@+id/bio_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="@dimen/line_spacing_multiplier"
+                android:text="@string/bio"
+                android:textAppearance="@style/NameStyle" />
+
+        </ScrollView>
+    </LinearLayout>
+
+
+</layout>

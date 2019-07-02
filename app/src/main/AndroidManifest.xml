@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.kotlindemo">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".application.DemoApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="@string/main_activity_title"
+            android:theme="@style/Theme.MyApp">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activity.room.NewWordActivity"
+            android:label="@string/enter_word_title"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".activity.room.RoomActivity"
+            android:label="@string/room_activity_title"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".activity.mvvm.QuotesActivity"
+            android:label="@string/mvvm_activity_title"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".activity.livedata.LiveDataActivity"
+            android:label="@string/livedata_activity_title"
+            android:theme="@style/Theme.MyApp"></activity>
+
+        <activity
+            android:name=".activity.lifecycle.LifeCycleActivity"
+            android:label="@string/lifecycle_activity_title"
+            android:theme="@style/Theme.MyApp"></activity>
+
+        <activity
+            android:name=".activity.viewmodel.ViewModelActivity"
+            android:label="@string/viewmodel_activity_title"
+            android:theme="@style/Theme.MyApp"></activity>
+
+        <activity
+            android:name=".activity.databinding.DataBindingActivity"
+            android:label="@string/databinding_activity_title"
+            android:theme="@style/Theme.MyApp"></activity>
+
+        <activity
+            android:name=".activity.databinding2.DataBindingActivity2"
+            android:label="@string/databinding_activity_title"
+            android:theme="@style/Theme.MyApp"></activity>
+
+        <activity
+            android:name=".activity.databinding2.OtherActivity"
+            android:label="@string/databinding_activity_title"
+            android:theme="@style/Theme.MyApp"></activity>
+
+        <activity
+            android:name=".activity.workermanager.WorkManagerActivity"
+            android:label="@string/workmanager_activity_title"
+            android:theme="@style/Theme.MyApp"></activity>
+
+        <activity
+            android:name=".activity.coroutines.CoroutinesActivity"
+            android:label="@string/coroutine_activity_title"
+            android:theme="@style/Theme.MyApp"></activity>
+
+        <activity
+            android:name=".activity.motion.MotionActivity"
+            android:label="@string/motion_activity_title"
+            android:theme="@style/Theme.MyApp"></activity>
+
+        <activity
+            android:name=".activity.motion.MotionByLayoutActivity"
+            android:label="@string/motion_activity_title"
+            android:theme="@style/Theme.MyApp"></activity>
+
+        <activity
+            android:name=".activity.motion.MotionByConstraintSetActivity"
+            android:label="@string/motion_activity_title"
+            android:theme="@style/Theme.MyApp"></activity>
+
+        <activity
+            android:name=".activity.motion.MotionByConstraintSetPlusCustomAttributeActivity"
+            android:label="@string/motion_activity_title"
+            android:theme="@style/Theme.MyApp"></activity>
+
+        <activity
+            android:name=".activity.motion.MotionByConstraintSetPlusKeyFrameActivity"
+            android:label="@string/motion_activity_title"
+            android:theme="@style/Theme.MyApp"></activity>
+
+        <activity
+            android:name=".activity.retrofitdemo.RetrofitDemoActivity"
+            android:label="@string/retrofit_activity_title"
+            android:theme="@style/Theme.MyApp"></activity>
+
+        <activity
+            android:name=".activity.retrofitdemo2.RetrofitDemoActivity"
+            android:label="@string/retrofit_activity_title"
+            android:theme="@style/Theme.MyApp"></activity>
+
+
+        <!--<activity
+            android:name="com.facebook.flipper.android.diagnostics.FlipperDiagnosticActivity"
+            android:exported="true"></activity>-->
+
+    </application>
+
+</manifest>

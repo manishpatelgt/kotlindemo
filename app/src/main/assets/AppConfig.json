@@ -1,0 +1,19 @@
+{  
+   "phonehomeurl":"https://synoups.com/PhoneHomeLite",
+   "showSplashIcon":true,
+   "periodicUpdates":{
+      "location":10,
+      "battery":180
+   },
+   "EventCode":{  
+      "eventMinChars":6,
+      "loginMinChars":6,
+      "boundingChar":"$",
+      "allowQRscan":true
+   },
+   "allowedlogin":{  
+      "loginCode":true,
+      "nameAndPwd":false,
+      "selfLogin":false
+   }
+}
