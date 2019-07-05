@@ -9,6 +9,7 @@ import com.kotlindemo.activity.databinding.DataBindingActivity
 import com.kotlindemo.activity.databinding2.DataBindingActivity2
 import com.kotlindemo.activity.lifecycle.LifeCycleActivity
 import com.kotlindemo.activity.livedata.LiveDataActivity
+import com.kotlindemo.activity.location.LocationDemoActivity
 import com.kotlindemo.activity.motion.MotionActivity
 import com.kotlindemo.activity.mvc.view.MVCDemoActivity
 import com.kotlindemo.activity.mvp.view.MVPDemoActivity
@@ -104,6 +105,10 @@ class MainActivity : ParentActivity() {
 
         retrofit_button_2.setOnClickListener {
             startActivity<com.kotlindemo.activity.retrofitdemo2.RetrofitDemoActivity>()
+        }
+
+        location_button.setOnClickListener {
+            startActivity<LocationDemoActivity>()
         }
 
         //From directly Object
