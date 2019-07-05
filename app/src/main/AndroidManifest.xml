@@ -32,6 +32,14 @@
             android:name=".activity.location.FusedLocationService"
             android:exported="true" />
 
+        <receiver
+            android:name=".activity.location.LocationUpdatesBroadcastReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.kotlindemo.activity.location.action.PROCESS_UPDATES" />
+            </intent-filter>
+        </receiver>
+
         <activity
             android:name=".activity.MainActivity"
             android:label="@string/main_activity_title"

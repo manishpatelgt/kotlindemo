@@ -26,14 +26,6 @@ class FusedLocationService : Service() {
      */
     private var locationRequest: LocationRequest? = null
 
-    /**
-     * Represents a geographical location.
-     */
-    private var currentLocation: Location? = null
-    /**
-     * Callback for changes in location.
-     */
-    private var mLocationCallback: LocationCallback? = null
     private var currentlyProcessingLocation = false
 
     private val mBinder = LocalBinder()
@@ -46,16 +38,17 @@ class FusedLocationService : Service() {
     override fun onCreate() {
         super.onCreate()
         logger.debug("FusedLocationService onCreate")
+    }
+
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        super.onStartCommand(intent, flags, startId)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val notificationHelper = NotificationHelper(this)
             val foregroundNotification =
                 notificationHelper.getForegroundServiceNotification("Service Running", "GPS Location updated.", null)
             startForeground(NotificationHelper.SERVICE_RUNNING_NOTIFICATION, foregroundNotification)
         }
-    }
-
-    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        super.onStartCommand(intent, flags, startId)
+        startTracking()
         logger.debug("FusedLocationService onStartCommand")
         return Service.START_NOT_STICKY
     }
@@ -79,16 +72,13 @@ class FusedLocationService : Service() {
         super.onDestroy()
         currentlyProcessingLocation = false
         logger.error("FusedLocationService onDestroy")
-        stopLocationUpdates()
-        stopForeground(true)
-        stopSelf()
+        stopTracking()
     }
 
     override fun onTaskRemoved(rootIntent: Intent) {
+        logger.error("FusedLocationService onTaskRemoved")
         currentlyProcessingLocation = false
-        stopLocationUpdates()
-        stopForeground(true)
-        stopSelf()
+        stopTracking()
         super.onTaskRemoved(rootIntent)
     }
 
@@ -96,39 +86,11 @@ class FusedLocationService : Service() {
     private fun startLocationUpdates() {
         try {
             mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-            mLocationCallback = object : LocationCallback() {
-                override fun onLocationResult(locationResult: LocationResult?) {
-                    super.onLocationResult(locationResult)
-                    onNewLocation(locationResult!!.lastLocation)
-                }
-            }
             // create location request
             createLocationRequest()
-            // get last known location
-            getLastLocation()
         } catch (e: SecurityException) {
             e.printStackTrace()
             logger.error("Lost location permission. Could not request updates: " + e.message)
-        }
-
-    }
-
-    /**
-     * get last location
-     */
-    private fun getLastLocation() {
-        try {
-            mFusedLocationClient!!.lastLocation.addOnCompleteListener { task ->
-                if (task.isSuccessful && task.result != null) {
-                    currentLocation = task.result
-                    onNewLocation(currentLocation)
-                } else {
-                    logger.error("Failed to get location")
-                }
-            }
-        } catch (e: SecurityException) {
-            e.printStackTrace()
-            logger.error("Lost location permission: " + e.message)
         }
 
     }
@@ -140,7 +102,7 @@ class FusedLocationService : Service() {
     fun requestLocationUpdates() {
         logger.debug("Requesting location updates")
         try {
-            mFusedLocationClient!!.requestLocationUpdates(locationRequest, getPendingIntent())
+            mFusedLocationClient!!.requestLocationUpdates(locationRequest, pendingIntent)
         } catch (e: SecurityException) {
             e.printStackTrace()
             logger.error("Lost location permission. Could not request updates: " + e.message)
@@ -148,11 +110,36 @@ class FusedLocationService : Service() {
 
     }
 
-    private fun getPendingIntent(): PendingIntent {
+    private val pendingIntent: PendingIntent
+        get() {
+            val intent = Intent(this, LocationUpdatesBroadcastReceiver::class.java)
+            intent.action = LocationUpdatesBroadcastReceiver.ACTION_PROCESS_UPDATES
+            return PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        }
+
+    private fun getPendingIntent3(): PendingIntent {
+        // Note: for apps targeting API level 25 ("Nougat") or lower, either
+        // PendingIntent.getService() or PendingIntent.getBroadcast() may be used when requesting
+        // location updates. For apps targeting API level O, only
+        // PendingIntent.getBroadcast() should be used. This is due to the limits placed on services
+        // started in the background in "O".
+
+        // TODO(developer): uncomment to use PendingIntent.getService().
+        //        Intent intent = new Intent(this, LocationUpdatesIntentService.class);
+        //        intent.setAction(LocationUpdatesIntentService.ACTION_PROCESS_UPDATES);
+        //        return PendingIntent.getService(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        val intent = Intent(this, LocationUpdatesBroadcastReceiver::class.java)
+        intent.action = LocationUpdatesBroadcastReceiver.ACTION_PROCESS_UPDATES
+        return PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+    }
+
+    private fun getPendingIntent2(): PendingIntent {
         val intent = Intent(this, LocationUpdatesIntentService::class.java)
         intent.action = LocationUpdatesIntentService.ACTION_PROCESS_UPDATES
         return PendingIntent.getService(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
     }
+
     /**
      * Sets the location request parameters.
      */
@@ -161,13 +148,9 @@ class FusedLocationService : Service() {
         locationRequest?.let {
             it.priority = LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY
             it.interval = 5000.toLong()  // 5 seconds, in milliseconds
-            it.fastestInterval = 5000.toLong() // the fastest rate in milliseconds at which your app can handle location updates // 1 second, in milliseconds
+            it.fastestInterval =
+                5000.toLong() // the fastest rate in milliseconds at which your app can handle location updates // 1 second, in milliseconds
         }
-    }
-
-    private fun onNewLocation(location: Location?) {
-        currentLocation = location
-        logger.debug("FusedLocationService onNewLocation: ${location.toString()}")
     }
 
     /**
@@ -176,8 +159,9 @@ class FusedLocationService : Service() {
      */
     fun stopLocationUpdates() {
         try {
+            logger.error("Stopping location updates")
             if (mFusedLocationClient != null) {
-                mFusedLocationClient!!.removeLocationUpdates(mLocationCallback!!)
+                mFusedLocationClient!!.removeLocationUpdates(pendingIntent)
             }
         } catch (e: SecurityException) {
             e.printStackTrace()

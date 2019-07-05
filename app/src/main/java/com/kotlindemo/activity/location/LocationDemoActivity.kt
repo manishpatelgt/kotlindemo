@@ -15,11 +15,17 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.kotlindemo.R
 import com.kotlindemo.application.ParentActivity
 import com.kotlindemo.utility.ToastManager
+import com.kotlindemo.utility.isAtLeastAndroid8
 import kotlinx.android.synthetic.main.activity_location.*
 
 /**
  * Created by Manish Patel on 7/5/2019.
  */
+//https://codelabs.developers.google.com/codelabs/background-location-updates-android-o/index.html?index=..%2F..index#0
+//https://stackoverflow.com/questions/48170499/updating-location-using-fusedlocationproviderclient-jobscheduler-and-jobservice
+//https://github.com/googlecodelabs/background-location-updates-android-o/blob/master/BackgroundLocationUpdates/app/src/main/java/com/google/android/gms/location/sample/backgroundlocationupdates/MainActivity.java
+//https://github.com/googlesamples/android-play-location/blob/master/LocationUpdatesPendingIntent/app/src/main/java/com/google/android/gms/location/sample/locationupdatespendingintent/MainActivity.java
+
 class LocationDemoActivity : ParentActivity() {
 
     companion object {
@@ -32,26 +38,36 @@ class LocationDemoActivity : ParentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_location)
         setSupportActionBar(toolbar)
-        startLocationService()
 
         startButton.setOnClickListener {
-            gpsService?.startTracking()
+            startLocationService()
             mTracking = true
             toggleButtons()
         }
 
         stopButton.setOnClickListener {
             mTracking = false
-            gpsService?.stopTracking()
+            stopLocationService()
             toggleButtons()
         }
     }
 
+    fun stopLocationService() {
+        stopService(Intent(applicationContext, FusedLocationService::class.java))
+    }
+
     fun startLocationService() {
-        val intent = Intent(this.application, FusedLocationService::class.java)
+
+        if (isAtLeastAndroid8()) {
+            startForegroundService(Intent(applicationContext, FusedLocationService::class.java))
+        } else {
+            startService(Intent(applicationContext, FusedLocationService::class.java))
+        }
+
+        /*val intent = Intent(this.application, FusedLocationService::class.java)
         this.application.startService(intent)
 //        this.getApplication().startForegroundService(intent);
-        this.application.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE)
+        this.application.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE)*/
     }
 
     private fun toggleButtons() {
