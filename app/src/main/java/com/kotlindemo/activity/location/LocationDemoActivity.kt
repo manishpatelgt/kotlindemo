@@ -25,6 +25,8 @@ import kotlinx.android.synthetic.main.activity_location.*
 //https://stackoverflow.com/questions/48170499/updating-location-using-fusedlocationproviderclient-jobscheduler-and-jobservice
 //https://github.com/googlecodelabs/background-location-updates-android-o/blob/master/BackgroundLocationUpdates/app/src/main/java/com/google/android/gms/location/sample/backgroundlocationupdates/MainActivity.java
 //https://github.com/googlesamples/android-play-location/blob/master/LocationUpdatesPendingIntent/app/src/main/java/com/google/android/gms/location/sample/locationupdatespendingintent/MainActivity.java
+//https://github.com/googlesamples/android-play-location
+//https://developer.android.com/preview/privacy/device-location
 
 class LocationDemoActivity : ParentActivity() {
 
