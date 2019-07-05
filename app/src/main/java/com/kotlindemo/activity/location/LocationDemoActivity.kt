@@ -27,6 +27,7 @@ import kotlinx.android.synthetic.main.activity_location.*
 //https://github.com/googlesamples/android-play-location/blob/master/LocationUpdatesPendingIntent/app/src/main/java/com/google/android/gms/location/sample/locationupdatespendingintent/MainActivity.java
 //https://github.com/googlesamples/android-play-location
 //https://developer.android.com/preview/privacy/device-location
+//https://www.freakyjolly.com/android-background-geolocation-service-without-any-kill/
 
 class LocationDemoActivity : ParentActivity() {
 

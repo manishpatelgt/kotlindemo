@@ -4,9 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import com.google.android.gms.location.LocationResult
 import android.content.Intent
-import android.util.Log
 import org.slf4j.LoggerFactory
-
 
 /**
  * Created by Manish Patel on 7/5/2019.
@@ -21,12 +19,12 @@ class LocationUpdatesBroadcastReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent?) {
         if (intent != null) {
             val action = intent.action
-            if (ACTION_PROCESS_UPDATES.equals(action)) {
+            if (ACTION_PROCESS_UPDATES == action) {
                 val result = LocationResult.extractResult(intent)
                 if (result != null) {
                     val locations = result.locations
-                    val results = LocationResultHelper.getLocationResultText(locations)
-                    logger.debug("Locations: $results")
+                    val location = LocationResultHelper.getLocationResultText(locations)
+                    logger.debug("Locations: $location")
                 }
             }
         }

@@ -16,18 +16,9 @@ import android.app.PendingIntent
 
 class FusedLocationService : Service() {
 
-    /**
-     * Provides access to the Fused Location Provider API.
-     */
     private var mFusedLocationClient: FusedLocationProviderClient? = null
-
-    /**
-     * Stores parameters for requests to the FusedLocationProviderApi.
-     */
     private var locationRequest: LocationRequest? = null
-
     private var currentlyProcessingLocation = false
-
     private val mBinder = LocalBinder()
 
     override fun onBind(intent: Intent): IBinder? {
