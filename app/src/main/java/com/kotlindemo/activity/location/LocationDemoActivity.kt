@@ -44,6 +44,7 @@ class LocationDemoActivity : ParentActivity() {
 
         startButton.setOnClickListener {
             startLocationService()
+            startLocationUpdateService()
             mTracking = true
             toggleButtons()
         }
@@ -57,6 +58,7 @@ class LocationDemoActivity : ParentActivity() {
 
     fun stopLocationService() {
         stopService(Intent(applicationContext, FusedLocationService::class.java))
+        stopService(Intent(applicationContext, LocationUpdateService::class.java))
     }
 
     fun startLocationService() {
@@ -71,6 +73,15 @@ class LocationDemoActivity : ParentActivity() {
         this.application.startService(intent)
 //        this.getApplication().startForegroundService(intent);
         this.application.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE)*/
+    }
+
+    fun startLocationUpdateService() {
+
+        if (isAtLeastAndroid8()) {
+            startForegroundService(Intent(applicationContext, LocationUpdateService::class.java))
+        } else {
+            startService(Intent(applicationContext, LocationUpdateService::class.java))
+        }
     }
 
     private fun toggleButtons() {

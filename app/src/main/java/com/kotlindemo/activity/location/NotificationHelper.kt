@@ -30,7 +30,7 @@ class NotificationHelper(val context: Context) : ContextWrapper(context) {
                 NotificationChannel(
                     SERVICE_RUNNING_CHANNEL_ID,
                     SERVICE_RUNNING_CHANNEL_NAME,
-                    NotificationManager.IMPORTANCE_DEFAULT
+                    NotificationManager.IMPORTANCE_HIGH
                 )
             foregroundServices.description = SERVICE_RUNNING_CHANNEL_DESCRIPTION
             foregroundServices.lightColor = Color.BLUE

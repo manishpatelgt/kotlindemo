@@ -24,14 +24,20 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
 
+        <!-- Services -->
         <service
             android:name=".activity.location.LocationUpdatesIntentService"
+            android:exported="false" />
+
+        <service
+            android:name=".activity.location.LocationUpdateService"
             android:exported="false" />
 
         <service
             android:name=".activity.location.FusedLocationService"
             android:exported="true" />
 
+        <!-- BroadcastReceiver -->
         <receiver
             android:name=".activity.location.LocationUpdatesBroadcastReceiver"
             android:exported="true">

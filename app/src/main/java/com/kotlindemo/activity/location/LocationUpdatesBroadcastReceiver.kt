@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import com.google.android.gms.location.LocationResult
 import android.content.Intent
+import com.kotlindemo.application.DemoApplication
 import org.slf4j.LoggerFactory
 
 /**
@@ -25,6 +26,7 @@ class LocationUpdatesBroadcastReceiver : BroadcastReceiver() {
                     val locations = result.locations
                     val location = LocationResultHelper.getLocationResultText(locations)
                     logger.debug("Locations: $location")
+                    DemoApplication.currentLocation = locations[0]
                 }
             }
         }

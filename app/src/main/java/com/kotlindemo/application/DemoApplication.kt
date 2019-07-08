@@ -101,6 +101,8 @@ class DemoApplication : MultiDexApplication(), LifecycleObserver, Application.Ac
         @Volatile
         private lateinit var sInstance: DemoApplication
 
+        var currentLocation: Location? = null
+
         fun getInstance(): DemoApplication {
             if (sInstance == null) {
                 synchronized(DemoApplication::class.java) {
