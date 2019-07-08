@@ -3,7 +3,9 @@ package com.kotlindemo.activity.location
 import android.app.Service
 import android.content.Intent
 import android.os.Build
+import android.os.Handler
 import android.os.IBinder
+import androidx.core.os.HandlerCompat
 import com.kotlindemo.application.DemoApplication
 import com.kotlindemo.utility.NetworkHelper
 import org.jetbrains.anko.doFromSdk
@@ -19,15 +21,15 @@ class LocationUpdateService : Service() {
 
     private var scheduler: ScheduledExecutorService? = Executors.newSingleThreadScheduledExecutor()
 
-    private val saveHHLocation = Runnable {
+    val saveHHLocation = Runnable {
         logger.debug("inside saveHHLocation")
         if (NetworkHelper.connectedToNetwork(applicationContext)) {
-            logger.debug("Internet found")
+            //logger.debug("Internet found")
             DemoApplication.currentLocation?.let {
-                logger.debug("Location ready to send ${DemoApplication.currentLocation.toString()}")
+                //logger.debug("Location ready to send ${DemoApplication.currentLocation.toString()}")
             }
         } else {
-            logger.debug("Internet not found")
+            //logger.debug("Internet not found")
         }
     }
 
@@ -49,7 +51,8 @@ class LocationUpdateService : Service() {
 
         scheduler?.let { it.shutdown() }
         scheduler = Executors.newSingleThreadScheduledExecutor()
-        scheduler!!.scheduleWithFixedDelay(saveHHLocation, 0, 10, TimeUnit.SECONDS)
+        scheduler!!.scheduleAtFixedRate(saveHHLocation, 0, 10, TimeUnit.SECONDS)
+
         // If we get killed, after returning from here, restart
         return Service.START_STICKY
     }

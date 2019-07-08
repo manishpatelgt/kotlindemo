@@ -25,7 +25,7 @@ class LocationUpdatesBroadcastReceiver : BroadcastReceiver() {
                 if (result != null) {
                     val locations = result.locations
                     val location = LocationResultHelper.getLocationResultText(locations)
-                    logger.debug("Locations: $location")
+                    //logger.debug("New Location: $location")
                     DemoApplication.currentLocation = locations[0]
                 }
             }
