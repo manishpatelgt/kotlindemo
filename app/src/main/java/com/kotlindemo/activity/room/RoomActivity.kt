@@ -17,6 +17,7 @@ import com.kotlindemo.application.ParentActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_room.*
 import kotlinx.android.synthetic.main.activity_room.toolbar
+import kotlin.random.Random
 
 /**
  * Created by Manish Patel on 5/7/2019.
@@ -48,8 +49,9 @@ class RoomActivity : ParentActivity() {
         })
 
         fab.setOnClickListener {
-            val intent = Intent(this@RoomActivity, NewWordActivity::class.java)
-            startActivityForResult(intent, newWordActivityRequestCode)
+            wordViewModel.insert(Word(Random.nextInt(0, 100).toString()))
+            //val intent = Intent(this@RoomActivity, NewWordActivity::class.java)
+            //startActivityForResult(intent, newWordActivityRequestCode)
         }
     }
 

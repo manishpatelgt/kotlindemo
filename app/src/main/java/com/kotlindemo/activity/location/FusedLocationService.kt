@@ -29,6 +29,7 @@ class FusedLocationService : Service() {
     override fun onCreate() {
         super.onCreate()
         logger.debug("FusedLocationService onCreate")
+        startTracking()
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -41,7 +42,7 @@ class FusedLocationService : Service() {
         }
         startTracking()
         logger.debug("FusedLocationService onStartCommand")
-        return Service.START_NOT_STICKY
+        return Service.START_STICKY
     }
 
     fun startTracking() {
@@ -147,6 +148,7 @@ class FusedLocationService : Service() {
     /**
      * Removes location updates. Note that in this sample we merely log the
      * [SecurityException].
+     *
      */
     fun stopLocationUpdates() {
         try {
