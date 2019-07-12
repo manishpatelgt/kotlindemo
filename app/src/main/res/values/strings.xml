@@ -22,6 +22,7 @@
     <string name="mvp_activity_title">MVP Demo</string>
     <string name="mvc_activity_title">MVC Demo</string>
     <string name="location_activity_title">Location Demo</string>
+    <string name="app_updates_activity_title">In AppUpdates Demo</string>
 
     <string name="button_room">Android Room</string>
     <string name="button_mvp">MVP</string>
@@ -38,6 +39,7 @@
     <string name="button_retrofit">ViewModel + LiveData + Retrofit</string>
     <string name="button_retrofit2">ViewModel + LiveData + Retrofit + Sealed Class</string>
     <string name="button_location">Location</string>
+    <string name="button_app_updates">In App Updates</string>
 
     <string name="next">Next Screen</string>
     <string name="image">Random city image</string>

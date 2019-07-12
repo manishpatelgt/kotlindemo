@@ -41,6 +41,7 @@ class LocationDemoActivity : ParentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_location)
         setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         startButton.setOnClickListener {
             startLocationService()

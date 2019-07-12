@@ -32,26 +32,11 @@ import org.jetbrains.anko.startActivity
 import com.karumi.dexter.listener.PermissionDeniedResponse
 import com.karumi.dexter.listener.PermissionGrantedResponse
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.content.Intent
 import android.telephony.SubscriptionManager
 import android.os.Build
 import android.util.Log
-import android.widget.Toast
-import androidx.core.content.ContextCompat
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.play.core.appupdate.AppUpdateManager
-import com.google.android.play.core.appupdate.AppUpdateManagerFactory
-import com.google.android.play.core.install.InstallState
-import com.google.android.play.core.install.InstallStateUpdatedListener
-import com.google.android.play.core.install.model.InstallStatus
-import com.google.android.play.core.install.model.UpdateAvailability
-import com.google.android.play.core.listener.StateUpdatedListener
-import com.google.android.play.core.splitinstall.SplitInstallStateUpdatedListener
-import com.google.firebase.remoteconfig.FirebaseRemoteConfig
-import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 import com.kotlindemo.R
-
+import com.kotlindemo.activity.inappupdates.AppUpdatesDemoActivity
 
 //https://proandroiddev.com/modern-android-development-with-kotlin-september-2017-part-1-f976483f7bd6
 //https://www.techotopia.com/index.php/A_Guide_to_using_ConstraintLayout_in_Android_Studio
@@ -71,7 +56,7 @@ class MainActivity : ParentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(com.kotlindemo.R.layout.activity_main)
+        setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
         //textView?.text = "Say hello to Kotlin"
@@ -136,111 +121,16 @@ class MainActivity : ParentActivity() {
             startActivity<LocationDemoActivity>()
         }
 
+        app_update_button.setOnClickListener {
+            startActivity<AppUpdatesDemoActivity>()
+        }
+
         //From directly Object
         val pi = Consts.pi
 
         //From companion
         val pi2 = CompanionConsts.pi
 
-        //#In-App update
-        //https://medium.com/@vigneshmca2k13/implementing-and-testing-in-app-update-in-android-d52680ecdcc7
-        //https://blog.mindorks.com/implementing-in-app-updates-on-android
-        //https://stackoverflow.com/questions/55939853/how-to-work-with-androids-in-app-update-api
-        
-        //In updated check
-        inAppUpdateCheck()
-    }
-
-    var appUpdateManager: AppUpdateManager? = null
-    var firebaseRemoteConfig = FirebaseRemoteConfig.getInstance()
-
-    fun inAppUpdateCheck() {
-
-        appUpdateManager = AppUpdateManagerFactory.create(this)
-
-        val configSettings = FirebaseRemoteConfigSettings.Builder()
-            .setMinimumFetchIntervalInSeconds(0)
-            .build()
-
-        firebaseRemoteConfig.setConfigSettingsAsync(configSettings)
-        firebaseRemoteConfig.setDefaults(R.xml.remote_config_defaults)
-        firebaseRemoteConfig.fetchAndActivate().addOnCompleteListener(
-            this
-        ) { task ->
-            if (task.isSuccessful) {
-                checkforUpdate()
-            } else {
-                Log.e(TAG, " failed to fetch remote config params")
-            }
-        }
-    }
-
-    // Creates a listener for request status updates.
-    private val installStateUpdatedListener = InstallStateUpdatedListener {
-        if (it.installStatus() == InstallStatus.DOWNLOADED) {
-            popupSnackbarForCompleteUpdate()
-        } else if (it.installStatus() == InstallStatus.INSTALLED) {
-            appUpdateManager?.let {
-                //it.unregisterListener(this)
-            }
-        } else {
-            Log.i(TAG, "InstallStateUpdatedListener: state: " + it.installStatus())
-        }
-    }
-
-    fun checkforUpdate() {
-
-        val app_update_type = firebaseRemoteConfig.getLong("app_update_type").toInt()
-        Log.d(TAG, "app_update_type: $app_update_type")
-
-        val appUpdateInfoTask = appUpdateManager?.appUpdateInfo
-        appUpdateManager?.registerListener(installStateUpdatedListener)
-
-        appUpdateInfoTask?.addOnSuccessListener { appUpdateInfo ->
-            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE) {
-                appUpdateManager?.startUpdateFlowForResult(
-                    appUpdateInfo,
-                    app_update_type,
-                    this,
-                    MY_REQUEST_CODE
-                )
-            } else if (appUpdateInfo.installStatus() === InstallStatus.DOWNLOADED) {
-                // After the update is downloaded, show a notification
-                // and request user confirmation to restart the app.
-                popupSnackbarForCompleteUpdate()
-            }
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        Log.d(TAG, "inside onActivityResult $resultCode")
-
-        if (requestCode == MY_REQUEST_CODE) {
-            if (resultCode == Activity.RESULT_OK) {
-                Log.e(TAG, "Update flow failed! Result code: $resultCode")
-            }
-        }
-    }
-
-    /*fun onStateUpdate(state: InstallState) {
-        if (state.installStatus() === InstallStatus.DOWNLOADED) {
-            // After the update is downloaded, show a notification
-            // and request user confirmation to restart the app.
-            popupSnackbarForCompleteUpdate()
-        }
-    }*/
-
-    /* Displays the snackbar notification and call to action. */
-    private fun popupSnackbarForCompleteUpdate() {
-        val snackbar = Snackbar.make(
-            findViewById(R.id.activity_main_layout),
-            "An update has just been downloaded.", Snackbar.LENGTH_INDEFINITE
-        )
-        snackbar.setAction("RESTART") { appUpdateManager?.completeUpdate() }
-        snackbar.setActionTextColor(resources.getColor(R.color.primary_dark_material_dark))
-        snackbar.show()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

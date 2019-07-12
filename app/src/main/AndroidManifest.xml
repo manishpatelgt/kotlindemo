@@ -163,6 +163,10 @@
             android:label="@string/location_activity_title"
             android:theme="@style/Theme.MyApp"></activity>
 
+        <activity
+            android:name=".activity.inappupdates.AppUpdatesDemoActivity"
+            android:label="@string/app_updates_activity_title"
+            android:theme="@style/Theme.MyApp"></activity>
 
         <!--<activity
             android:name="com.facebook.flipper.android.diagnostics.FlipperDiagnosticActivity"
