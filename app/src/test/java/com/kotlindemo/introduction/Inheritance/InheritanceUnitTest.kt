@@ -11,8 +11,7 @@ class InheritanceUnitTest {
 
     @Test
     fun main() {
-        val dog: Dog =
-            Yorkshire()
+        val dog: Dog = Yorkshire()
         dog.sayHello()
 
         println("----------------------------------------------")

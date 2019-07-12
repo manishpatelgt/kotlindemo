@@ -99,6 +99,13 @@ dependencies {
     implementation 'com.beust:klaxon:5.0.1'
     implementation 'com.google.code.gson:gson:2.8.5'    // GSON (older, slower)
 
+    //In-app updates
+    implementation 'com.google.firebase:firebase-config:18.0.0'
+    implementation 'com.google.firebase:firebase-core:17.0.0'
+
+    // So, make sure you also include that repository in your project's build.gradle file.
+    implementation 'com.google.android.play:core:1.5.0'
+
     //Flipper
     /*debugImplementation 'com.facebook.flipper:flipper:0.21.1'
     debugImplementation 'com.facebook.soloader:soloader:0.5.1'
@@ -110,3 +117,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
+
+apply plugin: 'com.google.gms.google-services'

@@ -21,8 +21,7 @@ class InheritanceUnitTest2 {
     @Test
     fun main() {
 
-        val tiger: Tiger =
-            SiberianTiger()
+        val tiger: Tiger = SiberianTiger()
         tiger.sayHello()
 
         println("----------------------------------------------")
