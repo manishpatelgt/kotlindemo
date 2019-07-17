@@ -141,6 +141,10 @@
             android:label="@string/app_updates_activity_title"
             android:theme="@style/Theme.MyApp" />
         <activity
+            android:name=".activity.rxjava.ui.RxJavaDemoActivity"
+            android:label="@string/rxjava_activity_title"
+            android:theme="@style/Theme.MyApp" />
+        <activity
             android:name=".activity.navigation.NavigationDemoActivity"
             android:label="@string/navigation_activity_title"
             android:theme="@style/Theme.MyApp">

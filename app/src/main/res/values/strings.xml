@@ -24,6 +24,7 @@
     <string name="location_activity_title">Location Demo</string>
     <string name="app_updates_activity_title">In AppUpdates Demo</string>
     <string name="navigation_activity_title">Navigation Demo</string>
+    <string name="rxjava_activity_title">RxJava Demo</string>
 
     <string name="button_room">Android Room</string>
     <string name="button_mvp">MVP</string>
@@ -42,6 +43,7 @@
     <string name="button_location">Location</string>
     <string name="button_app_updates">In App Updates</string>
     <string name="button_navigation">Navigation</string>
+    <string name="button_rxjava_demo">RxJava Demo</string>
 
     <string name="next">Next Screen</string>
     <string name="image">Random city image</string>

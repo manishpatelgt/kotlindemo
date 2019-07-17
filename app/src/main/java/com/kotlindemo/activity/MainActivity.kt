@@ -38,6 +38,7 @@ import android.util.Log
 import com.kotlindemo.R
 import com.kotlindemo.activity.inappupdates.AppUpdatesDemoActivity
 import com.kotlindemo.activity.navigation.NavigationDemoActivity
+import com.kotlindemo.activity.rxjava.ui.RxJavaDemoActivity
 
 //https://proandroiddev.com/modern-android-development-with-kotlin-september-2017-part-1-f976483f7bd6
 //https://www.techotopia.com/index.php/A_Guide_to_using_ConstraintLayout_in_Android_Studio
@@ -130,6 +131,10 @@ class MainActivity : ParentActivity() {
             startActivity<NavigationDemoActivity>()
         }
 
+        rxjava_button.setOnClickListener {
+            startActivity<RxJavaDemoActivity>()
+        }
+
         //From directly Object
         val pi = Consts.pi
 
@@ -176,8 +181,8 @@ class MainActivity : ParentActivity() {
             .withPermission(Manifest.permission.READ_PHONE_STATE)
             .withListener(object : PermissionListener {
                 override fun onPermissionGranted(response: PermissionGrantedResponse) {
-                    ToastManager.getInstance().showToast("Permission granted")
-                    readSimCards()
+                    //ToastManager.getInstance().showToast("Permission granted")
+                    //readSimCards()
                 }
 
                 override fun onPermissionDenied(response: PermissionDeniedResponse) {
