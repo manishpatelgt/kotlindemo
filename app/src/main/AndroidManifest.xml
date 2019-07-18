@@ -33,7 +33,15 @@
             android:exported="false" />
         <service
             android:name="com.kotlindemo.activity.otherthings.location.FusedLocationService"
-            android:exported="true" /> <!-- BroadcastReceiver -->
+            android:exported="true" />
+
+
+        <service
+            android:name=".activity.behavior.downloadmanager.DownloadFileService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- BroadcastReceiver -->
         <receiver
             android:name="com.kotlindemo.activity.otherthings.location.LocationUpdatesBroadcastReceiver"
             android:exported="true">

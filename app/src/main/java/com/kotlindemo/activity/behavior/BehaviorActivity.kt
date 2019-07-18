@@ -1,5 +1,6 @@
 package com.kotlindemo.activity.behavior
 
+import android.Manifest
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -9,7 +10,15 @@ import com.kotlindemo.R
 import com.kotlindemo.application.ParentActivity
 import kotlinx.android.synthetic.main.activity_behaviour.*
 import androidx.core.view.MenuItemCompat
-
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.MultiplePermissionsReport
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener
+import com.kotlindemo.activity.behavior.downloadmanager.DirectoryHelper
+import com.kotlindemo.activity.behavior.downloadmanager.DownloadFileService
+import com.kotlindemo.utility.ToastManager
+import kotlinx.android.synthetic.main.activity_behaviour.toolbar
 
 /**
  * Created by Manish Patel on 7/18/2019.
@@ -20,11 +29,69 @@ import androidx.core.view.MenuItemCompat
 
 class BehaviorActivity : ParentActivity() {
 
+    val IMAGE_DOWNLOAD_PATH = "http://globalmedicalco.com/photos/globalmedicalco/9/41427.jpg"
+    val SONG_DOWNLOAD_PATH = "https://cloudup.com/files/inYVmLryD4p/download"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(com.kotlindemo.R.layout.activity_behaviour)
+        setContentView(R.layout.activity_behaviour)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        download_img_button.setOnClickListener {
+            val intent = Intent(this, DownloadFileService::class.java)
+            intent.putExtra(DownloadFileService.DOWNLOAD_PATH, IMAGE_DOWNLOAD_PATH)
+            intent.putExtra(DownloadFileService.DESTINATION_PATH, DirectoryHelper.ROOT_DIRECTORY_NAME.plus("/"))
+            startService(intent)
+
+            /*startService(
+                DownloadFileService.getDownloadService(
+                    this,
+                    IMAGE_DOWNLOAD_PATH,
+                    DirectoryHelper.ROOT_DIRECTORY_NAME.plus("/")
+                )
+            )*/
+        }
+
+        button_download_song.setOnClickListener {
+
+            val intent = Intent(this, DownloadFileService::class.java)
+            intent.putExtra(DownloadFileService.DOWNLOAD_PATH, SONG_DOWNLOAD_PATH)
+            intent.putExtra(DownloadFileService.DESTINATION_PATH, DirectoryHelper.ROOT_DIRECTORY_NAME.plus("/"))
+            startService(intent)
+
+            /*startService(
+                DownloadFileService.getDownloadService(
+                    this,
+                    SONG_DOWNLOAD_PATH,
+                    DirectoryHelper.ROOT_DIRECTORY_NAME.plus("/")
+                )
+            )*/
+        }
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        Dexter.withActivity(this)
+            .withPermissions(
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ).withListener(object : MultiplePermissionsListener {
+                override fun onPermissionsChecked(report: MultiplePermissionsReport) {
+                    ToastManager.getInstance().showToast("All permission granted")
+                    DirectoryHelper.createDirectory()
+                }
+
+                override fun onPermissionRationaleShouldBeShown(
+                    permissions: List<PermissionRequest>,
+                    token: PermissionToken
+                ) {
+                    token.continuePermissionRequest()
+                }
+            }).check()
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -32,7 +99,7 @@ class BehaviorActivity : ParentActivity() {
         menuInflater.inflate(R.menu.menu_behavior, menu)
 
         // Get the menu item.
-        val menuItem = menu.findItem(R.id.menu_item_share)
+        val menuItem = menu.findItem(com.kotlindemo.R.id.menu_item_share)
         // Get the provider and hold onto it to set/change the share intent.
         shareActionProvider = MenuItemCompat.getActionProvider(menuItem) as ShareActionProvider
 
@@ -74,7 +141,7 @@ class BehaviorActivity : ParentActivity() {
 
         val id = item!!.itemId
 
-        if (id == R.id.menu_item_share) {
+        if (id == com.kotlindemo.R.id.menu_item_share) {
             println("clicked share menu item")
             shareActionProvider?.setShareIntent(ShareText())
             return true

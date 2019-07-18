@@ -31,6 +31,9 @@
     <string name="navigation_activity_title">Navigation Demo</string>
     <string name="rxjava_activity_title">RxJava Demo</string>
 
+    <string name="button_download_img">Download Image</string>
+    <string name="button_download_song">Download Song</string>
+
     <string name="button_behaviour">Behavior</string>
     <string name="button_pattern">Android Patterns</string>
     <string name="button_architecture">Architecture</string>
