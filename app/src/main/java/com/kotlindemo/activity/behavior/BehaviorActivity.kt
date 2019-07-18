@@ -16,6 +16,7 @@ import androidx.core.view.MenuItemCompat
  */
 //https://developer.android.com/training/sharing/shareaction
 //https://developer.android.com/reference/kotlin/androidx/appcompat/widget/ShareActionProvider
+//https://stackoverflow.com/questions/19118051/unable-to-cast-action-provider-to-share-action-provider/40089492
 
 class BehaviorActivity : ParentActivity() {
 
