@@ -1,8 +1,8 @@
-package com.kotlindemo.activity.rxjava.ui
+package com.kotlindemo.activity.otherthings.rxjava.ui
 
 import androidx.lifecycle.ViewModel
-import com.kotlindemo.activity.rxjava.persistence.User
-import com.kotlindemo.activity.rxjava.persistence.UserDao
+import com.kotlindemo.activity.otherthings.rxjava.persistence.User
+import com.kotlindemo.activity.otherthings.rxjava.persistence.UserDao
 import io.reactivex.Completable
 import io.reactivex.Flowable
 

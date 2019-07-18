@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import com.kotlindemo.application.ParentActivity
 import com.kotlindemo.activity.androidpatterns.mvc.view.NoteView.*
+import kotlinx.android.synthetic.main.activity_android_patterns.*
 
 /**
  * Created by Manish Patel on 7/2/2019.
@@ -18,6 +19,10 @@ class MVCDemoActivity : ParentActivity(), NoteSavedListener {
         super.onCreate(savedInstanceState)
         mNoteView = NoteViewImp(layoutInflater)
         setContentView(mNoteView.getRootView())
+
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         mNoteView.setListener(this)
     }
 

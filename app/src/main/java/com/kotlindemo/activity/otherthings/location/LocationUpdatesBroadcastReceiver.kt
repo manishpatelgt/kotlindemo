@@ -1,4 +1,4 @@
-package com.kotlindemo.activity.location
+package com.kotlindemo.activity.otherthings.location
 
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -14,7 +14,7 @@ class LocationUpdatesBroadcastReceiver : BroadcastReceiver() {
 
     companion object {
         private val logger = LoggerFactory.getLogger(LocationUpdatesBroadcastReceiver::class.java)
-        val ACTION_PROCESS_UPDATES = "com.kotlindemo.activity.location.action.PROCESS_UPDATES"
+        val ACTION_PROCESS_UPDATES = "com.kotlindemo.activity.otherthings.location.action.PROCESS_UPDATES"
     }
 
     override fun onReceive(context: Context, intent: Intent?) {

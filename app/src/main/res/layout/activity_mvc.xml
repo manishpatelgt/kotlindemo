@@ -16,7 +16,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-
     <EditText
         android:id="@+id/note_editText"
         style="@style/NameStyle"

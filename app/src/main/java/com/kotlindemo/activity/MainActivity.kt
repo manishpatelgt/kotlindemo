@@ -9,7 +9,6 @@ import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
 import com.kotlindemo.activity.coroutines.CoroutinesActivity
-import com.kotlindemo.activity.location.LocationDemoActivity
 import com.kotlindemo.activity.motion.MotionActivity
 import com.kotlindemo.appconstants.CompanionConsts
 import com.kotlindemo.appconstants.Consts
@@ -26,9 +25,8 @@ import android.util.Log
 import com.kotlindemo.R
 import com.kotlindemo.activity.androidpatterns.AndroidPatternsActivity
 import com.kotlindemo.activity.architecture.ArchitectureActivity
-import com.kotlindemo.activity.inappupdates.AppUpdatesDemoActivity
 import com.kotlindemo.activity.networklibs.NetworkLibsActivity
-import com.kotlindemo.activity.rxjava.ui.RxJavaDemoActivity
+import com.kotlindemo.activity.otherthings.OtherthingsActivity
 
 //https://proandroiddev.com/modern-android-development-with-kotlin-september-2017-part-1-f976483f7bd6
 //https://www.techotopia.com/index.php/A_Guide_to_using_ConstraintLayout_in_Android_Studio
@@ -64,24 +62,16 @@ class MainActivity : ParentActivity() {
             startActivity<NetworkLibsActivity>()
         }
 
-        coroutin_button.setOnClickListener {
-            startActivity<CoroutinesActivity>()
+        other_button.setOnClickListener {
+            startActivity<OtherthingsActivity>()
         }
 
         motion_button.setOnClickListener {
             startActivity<MotionActivity>()
         }
 
-        location_button.setOnClickListener {
-            startActivity<LocationDemoActivity>()
-        }
-
-        app_update_button.setOnClickListener {
-            startActivity<AppUpdatesDemoActivity>()
-        }
-
-        rxjava_button.setOnClickListener {
-            startActivity<RxJavaDemoActivity>()
+        coroutin_button.setOnClickListener {
+            startActivity<CoroutinesActivity>()
         }
 
         //From directly Object

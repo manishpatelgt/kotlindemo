@@ -1,6 +1,5 @@
-package com.kotlindemo.activity.location
+package com.kotlindemo.activity.otherthings.location
 
-import android.content.Context
 import android.location.Location
 
 

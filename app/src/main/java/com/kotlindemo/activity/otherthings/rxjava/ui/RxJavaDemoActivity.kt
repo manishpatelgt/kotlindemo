@@ -1,10 +1,10 @@
-package com.kotlindemo.activity.rxjava.ui
+package com.kotlindemo.activity.otherthings.rxjava.ui
 
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.ViewModelProviders
 import com.kotlindemo.R
-import com.kotlindemo.activity.rxjava.Injection
+import com.kotlindemo.activity.otherthings.rxjava.Injection
 import com.kotlindemo.application.ParentActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable

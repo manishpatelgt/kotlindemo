@@ -1,11 +1,9 @@
-package com.kotlindemo.activity.location
+package com.kotlindemo.activity.otherthings.location
 
 import android.app.Service
 import android.content.Intent
 import android.os.Build
-import android.os.Handler
 import android.os.IBinder
-import androidx.core.os.HandlerCompat
 import com.kotlindemo.application.DemoApplication
 import com.kotlindemo.utility.NetworkHelper
 import org.jetbrains.anko.doFromSdk

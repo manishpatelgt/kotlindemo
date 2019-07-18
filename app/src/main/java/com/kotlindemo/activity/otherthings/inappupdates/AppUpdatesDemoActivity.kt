@@ -1,4 +1,4 @@
-package com.kotlindemo.activity.inappupdates
+package com.kotlindemo.activity.otherthings.inappupdates
 
 import android.app.Activity
 import android.content.Intent
@@ -13,7 +13,6 @@ import com.google.android.play.core.install.model.UpdateAvailability
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 import com.kotlindemo.R
-import com.kotlindemo.activity.MainActivity
 import com.kotlindemo.application.ParentActivity
 import kotlinx.android.synthetic.main.activity_app_updates.*
 

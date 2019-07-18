@@ -1,8 +1,7 @@
-package com.kotlindemo.activity.location
+package com.kotlindemo.activity.otherthings.location
 
 import android.Manifest
 import android.content.ComponentName
-import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
 import android.os.Bundle

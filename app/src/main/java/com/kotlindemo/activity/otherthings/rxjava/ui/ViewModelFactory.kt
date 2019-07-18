@@ -1,8 +1,8 @@
-package com.kotlindemo.activity.rxjava.ui
+package com.kotlindemo.activity.otherthings.rxjava.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.kotlindemo.activity.rxjava.persistence.UserDao
+import com.kotlindemo.activity.otherthings.rxjava.persistence.UserDao
 
 /**
  * Created by Manish Patel on 7/17/2019.

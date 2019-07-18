@@ -1,4 +1,4 @@
-package com.kotlindemo.activity.location
+package com.kotlindemo.activity.otherthings.location
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -11,7 +11,6 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.kotlindemo.R
 import com.kotlindemo.utility.notificationManager
-import org.jetbrains.anko.doFromSdk
 
 class NotificationHelper(val context: Context) : ContextWrapper(context) {
     private var manager: NotificationManager =

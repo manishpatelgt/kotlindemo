@@ -26,16 +26,16 @@
         tools:ignore="GoogleAppIndexingWarning">
         <!-- Services -->
         <service
-            android:name=".activity.location.LocationUpdatesIntentService"
+            android:name="com.kotlindemo.activity.otherthings.location.LocationUpdatesIntentService"
             android:exported="false" />
         <service
-            android:name=".activity.location.LocationUpdateService"
+            android:name="com.kotlindemo.activity.otherthings.location.LocationUpdateService"
             android:exported="false" />
         <service
-            android:name=".activity.location.FusedLocationService"
+            android:name="com.kotlindemo.activity.otherthings.location.FusedLocationService"
             android:exported="true" /> <!-- BroadcastReceiver -->
         <receiver
-            android:name=".activity.location.LocationUpdatesBroadcastReceiver"
+            android:name="com.kotlindemo.activity.otherthings.location.LocationUpdatesBroadcastReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.kotlindemo.activity.location.action.PROCESS_UPDATES" />
@@ -52,6 +52,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="com.kotlindemo.activity.otherthings.OtherthingsActivity"
+            android:label="@string/other_activity_title"
+            android:theme="@style/Theme.MyApp" />
 
         <activity
             android:name="com.kotlindemo.activity.networklibs.NetworkLibsActivity"
@@ -149,15 +154,15 @@
             android:label="@string/mvc_activity_title"
             android:theme="@style/Theme.MyApp" />
         <activity
-            android:name=".activity.location.LocationDemoActivity"
+            android:name="com.kotlindemo.activity.otherthings.location.LocationDemoActivity"
             android:label="@string/location_activity_title"
             android:theme="@style/Theme.MyApp" />
         <activity
-            android:name=".activity.inappupdates.AppUpdatesDemoActivity"
+            android:name="com.kotlindemo.activity.otherthings.inappupdates.AppUpdatesDemoActivity"
             android:label="@string/app_updates_activity_title"
             android:theme="@style/Theme.MyApp" />
         <activity
-            android:name=".activity.rxjava.ui.RxJavaDemoActivity"
+            android:name="com.kotlindemo.activity.otherthings.rxjava.ui.RxJavaDemoActivity"
             android:label="@string/rxjava_activity_title"
             android:theme="@style/Theme.MyApp" />
         <activity

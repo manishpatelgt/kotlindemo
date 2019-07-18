@@ -1,4 +1,4 @@
-package com.kotlindemo.activity.rxjava.persistence
+package com.kotlindemo.activity.otherthings.rxjava.persistence
 
 import androidx.room.Dao
 import androidx.room.Insert

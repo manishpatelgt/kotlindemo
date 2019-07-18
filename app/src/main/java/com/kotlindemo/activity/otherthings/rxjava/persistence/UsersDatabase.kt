@@ -1,4 +1,4 @@
-package com.kotlindemo.activity.rxjava.persistence
+package com.kotlindemo.activity.otherthings.rxjava.persistence
 
 import android.content.Context
 import androidx.room.Database

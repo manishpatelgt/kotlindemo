@@ -1,4 +1,4 @@
-package com.kotlindemo.activity.location
+package com.kotlindemo.activity.otherthings.location
 
 import android.app.IntentService
 import android.content.Intent
@@ -12,7 +12,7 @@ class LocationUpdatesIntentService : IntentService("LocationUpdatesIntentService
 
     companion object {
         private val logger = LoggerFactory.getLogger(LocationUpdatesIntentService::class.java)
-        val ACTION_PROCESS_UPDATES = " com.kotlindemo.activity.location.action.PROCESS_UPDATES"
+        val ACTION_PROCESS_UPDATES = " com.kotlindemo.activity.otherthings.location.action.PROCESS_UPDATES"
     }
 
     override fun onHandleIntent(intent: Intent?) {
