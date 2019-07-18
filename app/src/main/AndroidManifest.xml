@@ -13,6 +13,10 @@
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- Declare features -->
+    <uses-feature android:name="android.hardware.camera" />
 
     <application
         android:name=".application.DemoApplication"
@@ -34,7 +38,6 @@
         <service
             android:name="com.kotlindemo.activity.otherthings.location.FusedLocationService"
             android:exported="true" />
-
 
         <service
             android:name=".activity.behavior.downloadmanager.DownloadFileService"
@@ -60,6 +63,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="com.kotlindemo.activity.behavior.camera.CameraActivity"
+            android:label="@string/camerax_activity_title"
+            android:theme="@style/Theme.MyApp" />
 
         <activity
             android:name="com.kotlindemo.activity.behavior.BehaviorActivity"

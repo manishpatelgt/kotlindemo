@@ -15,10 +15,13 @@ import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
+import com.kotlindemo.activity.behavior.camera.CameraActivity
 import com.kotlindemo.activity.behavior.downloadmanager.DirectoryHelper
 import com.kotlindemo.activity.behavior.downloadmanager.DownloadFileService
+import com.kotlindemo.activity.motion.MotionActivity
 import com.kotlindemo.utility.ToastManager
 import kotlinx.android.synthetic.main.activity_behaviour.toolbar
+import org.jetbrains.anko.startActivity
 
 /**
  * Created by Manish Patel on 7/18/2019.
@@ -38,6 +41,10 @@ class BehaviorActivity : ParentActivity() {
         setContentView(R.layout.activity_behaviour)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        button_camerax.setOnClickListener {
+            startActivity<CameraActivity>()
+        }
 
         download_img_button.setOnClickListener {
             val intent = Intent(this, DownloadFileService::class.java)

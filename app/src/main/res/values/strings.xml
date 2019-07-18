@@ -9,6 +9,7 @@
     <string name="main_activity_title">Kotlin Coroutines + Android Arch Components Demos</string>
     <string name="enter_word_title">Enter Word</string>
 
+    <string name="camerax_activity_title">CameraX Demo</string>
     <string name="behavior_activity_title">Behavior</string>
     <string name="other_activity_title">Other Important Things</string>
     <string name="network_lib_activity_title">Network Libs</string>
@@ -33,6 +34,7 @@
 
     <string name="button_download_img">Download Image</string>
     <string name="button_download_song">Download Song</string>
+    <string name="button_camerax">CameraX</string>
 
     <string name="button_behaviour">Behavior</string>
     <string name="button_pattern">Android Patterns</string>
@@ -61,6 +63,7 @@
     <string name="next">Next Screen</string>
     <string name="image">Random city image</string>
     <string name="change">Change Weather Property</string>
+    <string name="capture">Take Photo</string>
 
     <string name="what_is_your_nickname">What is your Nickname?</string>
     <string name="done">Done</string>
