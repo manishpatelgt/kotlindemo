@@ -26,10 +26,11 @@ import kotlinx.android.synthetic.main.activity_behaviour.toolbar
 //https://developer.android.com/training/sharing/shareaction
 //https://developer.android.com/reference/kotlin/androidx/appcompat/widget/ShareActionProvider
 //https://stackoverflow.com/questions/19118051/unable-to-cast-action-provider-to-share-action-provider/40089492
+//Download Manager: https://codinginfinite.com/android-download-manager-example/
 
 class BehaviorActivity : ParentActivity() {
 
-    val IMAGE_DOWNLOAD_PATH = "http://globalmedicalco.com/photos/globalmedicalco/9/41427.jpg"
+    val IMAGE_DOWNLOAD_PATH = "https://www.freeimageslive.com/galleries/buildings/structures/pics/canal100-0416.jpg"
     val SONG_DOWNLOAD_PATH = "https://cloudup.com/files/inYVmLryD4p/download"
 
     override fun onCreate(savedInstanceState: Bundle?) {
