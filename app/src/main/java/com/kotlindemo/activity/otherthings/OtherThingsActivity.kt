@@ -11,7 +11,7 @@ import org.jetbrains.anko.startActivity
 /**
  * Created by Manish Patel on 7/18/2019.
  */
-class OtherthingsActivity : ParentActivity() {
+class OtherThingsActivity : ParentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

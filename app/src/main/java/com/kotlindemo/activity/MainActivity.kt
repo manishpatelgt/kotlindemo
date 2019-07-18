@@ -25,8 +25,9 @@ import android.util.Log
 import com.kotlindemo.R
 import com.kotlindemo.activity.androidpatterns.AndroidPatternsActivity
 import com.kotlindemo.activity.architecture.ArchitectureActivity
+import com.kotlindemo.activity.behavior.BehaviorActivity
 import com.kotlindemo.activity.networklibs.NetworkLibsActivity
-import com.kotlindemo.activity.otherthings.OtherthingsActivity
+import com.kotlindemo.activity.otherthings.OtherThingsActivity
 
 //https://proandroiddev.com/modern-android-development-with-kotlin-september-2017-part-1-f976483f7bd6
 //https://www.techotopia.com/index.php/A_Guide_to_using_ConstraintLayout_in_Android_Studio
@@ -58,12 +59,16 @@ class MainActivity : ParentActivity() {
             startActivity<AndroidPatternsActivity>()
         }
 
+        behavior_button.setOnClickListener {
+            startActivity<BehaviorActivity>()
+        }
+
         network_libs_button.setOnClickListener {
             startActivity<NetworkLibsActivity>()
         }
 
         other_button.setOnClickListener {
-            startActivity<OtherthingsActivity>()
+            startActivity<OtherThingsActivity>()
         }
 
         motion_button.setOnClickListener {

@@ -9,6 +9,7 @@
     <string name="main_activity_title">Kotlin Coroutines + Android Arch Components Demos</string>
     <string name="enter_word_title">Enter Word</string>
 
+    <string name="behavior_activity_title">Behavior</string>
     <string name="other_activity_title">Other Important Things</string>
     <string name="network_lib_activity_title">Network Libs</string>
     <string name="android_pattern_activity_title">Android Patterns</string>
@@ -30,6 +31,7 @@
     <string name="navigation_activity_title">Navigation Demo</string>
     <string name="rxjava_activity_title">RxJava Demo</string>
 
+    <string name="button_behaviour">Behavior</string>
     <string name="button_pattern">Android Patterns</string>
     <string name="button_architecture">Architecture</string>
     <string name="button_room">Android Room</string>

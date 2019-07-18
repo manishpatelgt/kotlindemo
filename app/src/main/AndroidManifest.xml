@@ -54,7 +54,12 @@
         </activity>
 
         <activity
-            android:name="com.kotlindemo.activity.otherthings.OtherthingsActivity"
+            android:name="com.kotlindemo.activity.behavior.BehaviorActivity"
+            android:label="@string/behavior_activity_title"
+            android:theme="@style/Theme.MyApp" />
+
+        <activity
+            android:name="com.kotlindemo.activity.otherthings.OtherThingsActivity"
             android:label="@string/other_activity_title"
             android:theme="@style/Theme.MyApp" />
 
