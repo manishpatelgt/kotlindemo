@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.mvvm.QuotesActivity">
+    tools:context=".activity.androidpatterns.mvvm.QuotesActivity">
 
     <androidx.appcompat.widget.Toolbar
         app:layout_constraintStart_toStartOf="parent"

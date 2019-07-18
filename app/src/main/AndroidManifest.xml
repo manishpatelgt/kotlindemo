@@ -52,44 +52,60 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
-            android:name=".activity.room.NewWordActivity"
+            android:name="com.kotlindemo.activity.networklibs.NetworkLibsActivity"
+            android:label="@string/network_lib_activity_title"
+            android:theme="@style/Theme.MyApp" />
+
+        <activity
+            android:name="com.kotlindemo.activity.androidpatterns.AndroidPatternsActivity"
+            android:label="@string/android_pattern_activity_title"
+            android:theme="@style/Theme.MyApp" />
+
+        <activity
+            android:name="com.kotlindemo.activity.architecture.ArchitectureActivity"
+            android:label="@string/architecture_activity_title"
+            android:theme="@style/Theme.MyApp" />
+
+        <activity
+            android:name="com.kotlindemo.activity.architecture.room.NewWordActivity"
             android:label="@string/enter_word_title"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.room.RoomActivity"
+            android:name="com.kotlindemo.activity.architecture.room.RoomActivity"
             android:label="@string/room_activity_title"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.mvvm.QuotesActivity"
+            android:name="com.kotlindemo.activity.androidpatterns.mvvm.QuotesActivity"
             android:label="@string/mvvm_activity_title"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.livedata.LiveDataActivity"
+            android:name="com.kotlindemo.activity.architecture.livedata.LiveDataActivity"
             android:label="@string/livedata_activity_title"
             android:theme="@style/Theme.MyApp" />
         <activity
-            android:name=".activity.lifecycle.LifeCycleActivity"
+            android:name="com.kotlindemo.activity.architecture.lifecycle.LifeCycleActivity"
             android:label="@string/lifecycle_activity_title"
             android:theme="@style/Theme.MyApp" />
         <activity
-            android:name=".activity.viewmodel.ViewModelActivity"
+            android:name="com.kotlindemo.activity.architecture.viewmodel.ViewModelActivity"
             android:label="@string/viewmodel_activity_title"
             android:theme="@style/Theme.MyApp" />
         <activity
-            android:name=".activity.databinding.DataBindingActivity"
+            android:name="com.kotlindemo.activity.architecture.databinding.DataBindingActivity"
             android:label="@string/databinding_activity_title"
             android:theme="@style/Theme.MyApp" />
         <activity
-            android:name=".activity.databinding2.DataBindingActivity2"
+            android:name="com.kotlindemo.activity.architecture.databinding2.DataBindingActivity2"
             android:label="@string/databinding_activity_title"
             android:theme="@style/Theme.MyApp" />
         <activity
-            android:name=".activity.databinding2.OtherActivity"
+            android:name="com.kotlindemo.activity.architecture.databinding2.OtherActivity"
             android:label="@string/databinding_activity_title"
             android:theme="@style/Theme.MyApp" />
         <activity
-            android:name=".activity.workermanager.WorkManagerActivity"
+            android:name="com.kotlindemo.activity.architecture.workermanager.WorkManagerActivity"
             android:label="@string/workmanager_activity_title"
             android:theme="@style/Theme.MyApp" />
         <activity
@@ -117,19 +133,19 @@
             android:label="@string/motion_activity_title"
             android:theme="@style/Theme.MyApp" />
         <activity
-            android:name=".activity.retrofitdemo.RetrofitDemoActivity"
+            android:name="com.kotlindemo.activity.networklibs.retrofitdemo.RetrofitDemoActivity"
             android:label="@string/retrofit_activity_title"
             android:theme="@style/Theme.MyApp" />
         <activity
-            android:name=".activity.retrofitdemo2.RetrofitDemoActivity"
+            android:name="com.kotlindemo.activity.networklibs.retrofitdemo2.RetrofitDemoActivity"
             android:label="@string/retrofit_activity_title"
             android:theme="@style/Theme.MyApp" />
         <activity
-            android:name=".activity.mvp.view.MVPDemoActivity"
+            android:name="com.kotlindemo.activity.androidpatterns.mvp.view.MVPDemoActivity"
             android:label="@string/mvp_activity_title"
             android:theme="@style/Theme.MyApp" />
         <activity
-            android:name=".activity.mvc.view.MVCDemoActivity"
+            android:name="com.kotlindemo.activity.androidpatterns.mvc.view.MVCDemoActivity"
             android:label="@string/mvc_activity_title"
             android:theme="@style/Theme.MyApp" />
         <activity
@@ -145,7 +161,7 @@
             android:label="@string/rxjava_activity_title"
             android:theme="@style/Theme.MyApp" />
         <activity
-            android:name=".activity.navigation.NavigationDemoActivity"
+            android:name="com.kotlindemo.activity.architecture.navigation.NavigationDemoActivity"
             android:label="@string/navigation_activity_title"
             android:theme="@style/Theme.MyApp">
             <!-- TODO: This intent filter will be unnecessary in the future. -->

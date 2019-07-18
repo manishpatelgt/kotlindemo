@@ -6,7 +6,7 @@
 
         <variable
             name="data"
-            type="com.kotlindemo.activity.databinding2.WeatherData" />
+            type="com.kotlindemo.activity.architecture.databinding2.WeatherData" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

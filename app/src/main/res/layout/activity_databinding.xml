@@ -9,11 +9,11 @@
 
         <variable
             name="myName"
-            type="com.kotlindemo.activity.databinding.MyName" />
+            type="com.kotlindemo.activity.architecture.databinding.MyName" />
 
         <variable
             name="presenter"
-            type="com.kotlindemo.activity.databinding.DataBindingActivity.Presenter" />
+            type="com.kotlindemo.activity.architecture.databinding.DataBindingActivity.Presenter" />
 
     </data>
 

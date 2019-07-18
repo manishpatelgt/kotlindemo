@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/titleScreen"
-        android:name="com.kotlindemo.activity.navigation.TitleScreen"
+        android:name="com.kotlindemo.activity.architecture.navigation.TitleScreen"
         android:label="fragment_title_screen"
         tools:layout="@layout/fragment_title_screen">
         <action
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/register"
-        android:name="com.kotlindemo.activity.navigation.Register"
+        android:name="com.kotlindemo.activity.architecture.navigation.Register"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register">
         <action
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/leaderboard"
-        android:name="com.kotlindemo.activity.navigation.Leaderboard"
+        android:name="com.kotlindemo.activity.architecture.navigation.Leaderboard"
         android:label="fragment_leaderboard"
         tools:layout="@layout/fragment_leaderboard">
         <action
@@ -53,7 +53,7 @@
     </fragment>
     <fragment
         android:id="@+id/match"
-        android:name="com.kotlindemo.activity.navigation.Match"
+        android:name="com.kotlindemo.activity.architecture.navigation.Match"
         android:label="fragment_match"
         tools:layout="@layout/fragment_match">
         <action
@@ -66,7 +66,7 @@
     </fragment>
     <fragment
         android:id="@+id/inGame"
-        android:name="com.kotlindemo.activity.navigation.InGame"
+        android:name="com.kotlindemo.activity.architecture.navigation.InGame"
         android:label="fragment_in_game"
         tools:layout="@layout/fragment_in_game">
         <action
@@ -90,7 +90,7 @@
     </fragment>
     <fragment
         android:id="@+id/resultsWinner"
-        android:name="com.kotlindemo.activity.navigation.ResultsWinner"
+        android:name="com.kotlindemo.activity.architecture.navigation.ResultsWinner"
         android:label="fragment_results_winner"
         tools:layout="@layout/fragment_results_winner">
         <action
@@ -103,7 +103,7 @@
     </fragment>
     <fragment
         android:id="@+id/gameOver"
-        android:name="com.kotlindemo.activity.navigation.GameOver"
+        android:name="com.kotlindemo.activity.architecture.navigation.GameOver"
         android:label="fragment_game_over"
         tools:layout="@layout/fragment_game_over">
         <action
@@ -112,7 +112,7 @@
     </fragment>
     <fragment
         android:id="@+id/userProfile"
-        android:name="com.kotlindemo.activity.navigation.UserProfile"
+        android:name="com.kotlindemo.activity.architecture.navigation.UserProfile"
         android:label="fragment_user_profile"
         tools:layout="@layout/fragment_user_profile" >
         <argument

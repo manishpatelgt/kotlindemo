@@ -1,6 +1,6 @@
 package com.kotlindemo.appconstants
 
-import com.kotlindemo.activity.databinding2.WeatherData
+import com.kotlindemo.activity.architecture.databinding2.WeatherData
 
 /**
  * Created by Manish Patel on 5/24/2019.

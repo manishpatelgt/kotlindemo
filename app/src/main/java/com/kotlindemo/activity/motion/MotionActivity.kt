@@ -1,9 +1,7 @@
 package com.kotlindemo.activity.motion
 
 import android.os.Bundle
-import androidx.appcompat.widget.Toolbar
 import com.kotlindemo.R
-import com.kotlindemo.activity.mvvm.QuotesActivity
 import com.kotlindemo.application.ParentActivity
 import kotlinx.android.synthetic.main.activity_motion.*
 import org.jetbrains.anko.startActivity

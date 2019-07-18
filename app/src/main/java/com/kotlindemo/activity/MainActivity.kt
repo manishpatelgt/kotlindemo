@@ -9,23 +9,11 @@ import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
 import com.kotlindemo.activity.coroutines.CoroutinesActivity
-import com.kotlindemo.activity.databinding.DataBindingActivity
-import com.kotlindemo.activity.databinding2.DataBindingActivity2
-import com.kotlindemo.activity.lifecycle.LifeCycleActivity
-import com.kotlindemo.activity.livedata.LiveDataActivity
 import com.kotlindemo.activity.location.LocationDemoActivity
 import com.kotlindemo.activity.motion.MotionActivity
-import com.kotlindemo.activity.mvc.view.MVCDemoActivity
-import com.kotlindemo.activity.mvp.view.MVPDemoActivity
-import com.kotlindemo.activity.mvvm.QuotesActivity
-import com.kotlindemo.activity.retrofitdemo.RetrofitDemoActivity
-import com.kotlindemo.activity.room.RoomActivity
-import com.kotlindemo.activity.viewmodel.ViewModelActivity
-import com.kotlindemo.activity.workermanager.WorkManagerActivity
 import com.kotlindemo.appconstants.CompanionConsts
 import com.kotlindemo.appconstants.Consts
 import com.kotlindemo.application.ParentActivity
-import com.kotlindemo.utility.ToastManager
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import org.jetbrains.anko.startActivity
@@ -36,8 +24,10 @@ import android.telephony.SubscriptionManager
 import android.os.Build
 import android.util.Log
 import com.kotlindemo.R
+import com.kotlindemo.activity.androidpatterns.AndroidPatternsActivity
+import com.kotlindemo.activity.architecture.ArchitectureActivity
 import com.kotlindemo.activity.inappupdates.AppUpdatesDemoActivity
-import com.kotlindemo.activity.navigation.NavigationDemoActivity
+import com.kotlindemo.activity.networklibs.NetworkLibsActivity
 import com.kotlindemo.activity.rxjava.ui.RxJavaDemoActivity
 
 //https://proandroiddev.com/modern-android-development-with-kotlin-september-2017-part-1-f976483f7bd6
@@ -53,7 +43,6 @@ import com.kotlindemo.activity.rxjava.ui.RxJavaDemoActivity
 //Kotlin Coroutines
 //https://codelabs.developers.google.com/codelabs/kotlin-coroutines/index.html?index=..%2F..index#0
 
-
 class MainActivity : ParentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,44 +52,16 @@ class MainActivity : ParentActivity() {
 
         //textView?.text = "Say hello to Kotlin"
 
-        mvc_button.setOnClickListener {
-            startActivity<MVCDemoActivity>()
+        architecture_button.setOnClickListener {
+            startActivity<ArchitectureActivity>()
         }
 
-        mvp_button.setOnClickListener {
-            startActivity<MVPDemoActivity>()
+        android_pattern_button.setOnClickListener {
+            startActivity<AndroidPatternsActivity>()
         }
 
-        room_button.setOnClickListener {
-            startActivity<RoomActivity>()
-        }
-
-        mvvm_button.setOnClickListener {
-            startActivity<QuotesActivity>()
-        }
-
-        livedata_button.setOnClickListener {
-            startActivity<LiveDataActivity>()
-        }
-
-        lifecycledata_button.setOnClickListener {
-            startActivity<LifeCycleActivity>()
-        }
-
-        viewmodel_button.setOnClickListener {
-            startActivity<ViewModelActivity>()
-        }
-
-        databinding_button.setOnClickListener {
-            startActivity<DataBindingActivity>()
-        }
-
-        databinding2_button.setOnClickListener {
-            startActivity<DataBindingActivity2>()
-        }
-
-        work_button.setOnClickListener {
-            startActivity<WorkManagerActivity>()
+        network_libs_button.setOnClickListener {
+            startActivity<NetworkLibsActivity>()
         }
 
         coroutin_button.setOnClickListener {
@@ -111,24 +72,12 @@ class MainActivity : ParentActivity() {
             startActivity<MotionActivity>()
         }
 
-        retrofit_button.setOnClickListener {
-            startActivity<RetrofitDemoActivity>()
-        }
-
-        retrofit_button_2.setOnClickListener {
-            startActivity<com.kotlindemo.activity.retrofitdemo2.RetrofitDemoActivity>()
-        }
-
         location_button.setOnClickListener {
             startActivity<LocationDemoActivity>()
         }
 
         app_update_button.setOnClickListener {
             startActivity<AppUpdatesDemoActivity>()
-        }
-
-        navigation_button.setOnClickListener {
-            startActivity<NavigationDemoActivity>()
         }
 
         rxjava_button.setOnClickListener {
@@ -202,6 +151,5 @@ class MainActivity : ParentActivity() {
 
     companion object {
         val TAG: String = MainActivity.javaClass::class.java.simpleName
-        const val MY_REQUEST_CODE = 1
     }
 }
