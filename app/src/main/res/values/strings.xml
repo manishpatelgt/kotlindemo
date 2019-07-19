@@ -63,6 +63,9 @@
     <string name="button_other">Other things</string>
     <string name="button_shimmer_demo">Shimmer Effect</string>
 
+    <string name="button_get_post">Get Posts</string>
+    <string name="button_get_movies">Get Movies</string>
+
     <string name="next">Next Screen</string>
     <string name="image">Random city image</string>
     <string name="change">Change Weather Property</string>

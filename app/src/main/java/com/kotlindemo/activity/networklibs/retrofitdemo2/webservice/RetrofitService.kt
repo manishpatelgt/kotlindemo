@@ -18,6 +18,10 @@ interface RetrofitService {
     @GET("typicode/demo/posts")
     fun getPosts(): Deferred<Response<PostResponse>>
 
+    //https://my-json-server.typicode.com/
+    @GET("typicode/demo/posts")
+    fun getPosts2(): Deferred<Response<List<Post>>>
+
     @FormUrlEncoded
     @POST("tasks")
     fun getMovies(

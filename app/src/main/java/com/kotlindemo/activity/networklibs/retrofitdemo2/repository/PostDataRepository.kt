@@ -1,5 +1,6 @@
 package com.kotlindemo.activity.networklibs.retrofitdemo2.repository
 
+import com.kotlindemo.activity.networklibs.retrofitdemo2.Post
 import com.kotlindemo.activity.networklibs.retrofitdemo2.RetrofitFactory
 import com.kotlindemo.activity.networklibs.retrofitdemo2.RetrofitService
 import com.kotlindemo.activity.networklibs.retrofitdemo2.utils.safeApiCall
@@ -19,6 +20,11 @@ class PostDataRepository constructor(private val retrofitService: RetrofitServic
         private var instance: PostDataRepository? = null
 
         fun getInstance() =
+            instance ?: synchronized(this) {
+                instance ?: PostDataRepository(RetrofitFactory.apiService).also { instance = it }
+            }
+
+        fun getInstance2() =
             instance ?: synchronized(this) {
                 instance ?: PostDataRepository(RetrofitFactory.apiService2).also { instance = it }
             }
@@ -52,8 +58,8 @@ class PostDataRepository constructor(private val retrofitService: RetrofitServic
         errorMessage = "Error occurred"
     )
 
-    suspend fun makeAPICall(): Result<PostResponse> {
-        val response = retrofitService.getPosts().await()
+    suspend fun makeAPICall(): Result<List<Post>> {
+        val response = retrofitService.getPosts2().await()
         if (response.isSuccessful)
             return Result.Success(response.body()!!)
         return Result.Error(IOException("Error occurred during fetching posts!"))

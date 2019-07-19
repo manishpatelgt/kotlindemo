@@ -76,14 +76,5 @@ class ShimmerDemoActivity : ParentActivity() {
             shimmer_view_container.stopShimmerAnimation()
         }
     }
-
-    override fun onResume() {
-        super.onResume()
-        //shimmer_view_container.startShimmerAnimation()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        //shimmer_view_container.stopShimmerAnimation()
-    }
+    
 }

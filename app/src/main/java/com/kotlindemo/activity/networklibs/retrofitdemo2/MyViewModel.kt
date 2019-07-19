@@ -78,7 +78,7 @@ class MyViewModel constructor(private val postDataRepository: PostDataRepository
             when (val result = postDataRepository.getPosts()) {
                 is Result.Success -> {
                     isLoading.value = false
-                    postList?.value = result.data.posts
+                    postList?.value = result.data
                 }
                 is Result.Error -> {
                     apiError.value = result.exception.message
