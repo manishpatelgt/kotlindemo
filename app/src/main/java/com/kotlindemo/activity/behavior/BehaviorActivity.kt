@@ -18,7 +18,6 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.kotlindemo.activity.behavior.camera.CameraActivity
 import com.kotlindemo.activity.behavior.downloadmanager.DirectoryHelper
 import com.kotlindemo.activity.behavior.downloadmanager.DownloadFileService
-import com.kotlindemo.activity.motion.MotionActivity
 import com.kotlindemo.utility.ToastManager
 import kotlinx.android.synthetic.main.activity_behaviour.toolbar
 import org.jetbrains.anko.startActivity
@@ -107,13 +106,13 @@ class BehaviorActivity : ParentActivity() {
         menuInflater.inflate(R.menu.menu_behavior, menu)
 
         // Get the menu item.
-        val menuItem = menu.findItem(com.kotlindemo.R.id.menu_item_share)
+        val menuItem = menu.findItem(R.id.menu_item_share)
         // Get the provider and hold onto it to set/change the share intent.
         shareActionProvider = MenuItemCompat.getActionProvider(menuItem) as ShareActionProvider
 
         // Set share Intent.
         // Note: You can set the share Intent afterwords if you don't want to set it right now.
-        shareActionProvider?.setShareIntent(ShareText())
+        //shareActionProvider?.setShareIntent(ShareText())
 
         // Locate MenuItem with ShareActionProvider
         /*menu.findItem(R.id.menu_item_share).also { menuItem ->

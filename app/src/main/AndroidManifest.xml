@@ -75,6 +75,11 @@
             android:theme="@style/Theme.MyApp" />
 
         <activity
+            android:name="com.kotlindemo.activity.otherthings.shimmer.ShimmerDemoActivity"
+            android:label="@string/shimmer_effect_activity_title"
+            android:theme="@style/Theme.MyApp" />
+
+        <activity
             android:name="com.kotlindemo.activity.otherthings.OtherThingsActivity"
             android:label="@string/other_activity_title"
             android:theme="@style/Theme.MyApp" />

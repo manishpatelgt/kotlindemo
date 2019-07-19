@@ -5,6 +5,7 @@ import com.kotlindemo.R
 import com.kotlindemo.activity.otherthings.inappupdates.AppUpdatesDemoActivity
 import com.kotlindemo.activity.otherthings.location.LocationDemoActivity
 import com.kotlindemo.activity.otherthings.rxjava.ui.RxJavaDemoActivity
+import com.kotlindemo.activity.otherthings.shimmer.ShimmerDemoActivity
 import com.kotlindemo.application.ParentActivity
 import kotlinx.android.synthetic.main.activity_other_things.*
 import org.jetbrains.anko.startActivity
@@ -29,6 +30,10 @@ class OtherThingsActivity : ParentActivity() {
 
         rxjava_button.setOnClickListener {
             startActivity<RxJavaDemoActivity>()
+        }
+
+        shimmer_button.setOnClickListener {
+            startActivity<ShimmerDemoActivity>()
         }
     }
 }

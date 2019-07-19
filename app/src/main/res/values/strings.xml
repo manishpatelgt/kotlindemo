@@ -9,6 +9,8 @@
     <string name="main_activity_title">Kotlin Coroutines + Android Arch Components Demos</string>
     <string name="enter_word_title">Enter Word</string>
 
+    <string name="shimmer_effect_activity_title">Shimmer Effect Demo</string>
+
     <string name="camerax_activity_title">CameraX Demo</string>
     <string name="behavior_activity_title">Behavior</string>
     <string name="other_activity_title">Other Important Things</string>
@@ -59,6 +61,7 @@
     <string name="button_rxjava_demo">RxJava Demo</string>
     <string name="button_network">Network Libs</string>
     <string name="button_other">Other things</string>
+    <string name="button_shimmer_demo">Shimmer Effect</string>
 
     <string name="next">Next Screen</string>
     <string name="image">Random city image</string>
