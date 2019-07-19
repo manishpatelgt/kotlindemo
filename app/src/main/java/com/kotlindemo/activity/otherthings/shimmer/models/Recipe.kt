@@ -17,7 +17,7 @@ class Recipe {
     var description: String? = null
 
     @SerializedName("price")
-    var pricde: Double = 0.0
+    var price: Double = 0.0
 
     @SerializedName("thumbnail")
     var thumbnail: String? = null

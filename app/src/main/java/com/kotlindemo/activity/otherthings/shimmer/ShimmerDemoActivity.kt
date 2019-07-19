@@ -5,7 +5,11 @@ import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.kotlindemo.R
+import com.kotlindemo.activity.otherthings.shimmer.adapter.RecipeAdapter
+import com.kotlindemo.activity.otherthings.shimmer.models.Recipe
 import com.kotlindemo.activity.otherthings.shimmer.repository.MyViewModelFactory
 import com.kotlindemo.activity.otherthings.shimmer.repository.RecipeDataRepository
 import com.kotlindemo.activity.otherthings.shimmer.viewmodel.MyViewModel
@@ -41,6 +45,7 @@ class ShimmerDemoActivity : ParentActivity() {
         myViewModel.getRecipes().observe(this, Observer { entries ->
             Log.d(TAG, "called observe")
             Log.d(TAG, entries.toString())
+            bindRecyclerAdapter(entries)
         })
 
         myViewModel.isLoading.observe(this, Observer<Boolean> {
@@ -51,6 +56,15 @@ class ShimmerDemoActivity : ParentActivity() {
                 Log.e(TAG, "Error: $it")
             }
         })
+    }
+
+    private lateinit var recipeAdapter: RecipeAdapter
+
+    fun bindRecyclerAdapter(recipes: List<Recipe>) {
+        movies_list.setHasFixedSize(true)
+        movies_list.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        recipeAdapter = RecipeAdapter(recipes, this@ShimmerDemoActivity)
+        movies_list.adapter = recipeAdapter
     }
 
     private fun shimmerEffect(show: Boolean) {
