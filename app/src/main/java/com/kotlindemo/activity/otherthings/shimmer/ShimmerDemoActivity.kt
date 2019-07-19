@@ -2,6 +2,7 @@ package com.kotlindemo.activity.otherthings.shimmer
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.kotlindemo.R
@@ -15,6 +16,8 @@ import kotlinx.android.synthetic.main.activity_shimmer_demo.toolbar
 /**
  * Created by Manish Patel on 7/19/2019.
  */
+//https://www.androidhive.info/2018/01/android-content-placeholder-animation-like-facebook-using-shimmer/
+
 class ShimmerDemoActivity : ParentActivity() {
 
     companion object {
@@ -32,7 +35,6 @@ class ShimmerDemoActivity : ParentActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         setupUI()
     }
-
 
     private fun setupUI() {
 
@@ -53,8 +55,10 @@ class ShimmerDemoActivity : ParentActivity() {
 
     private fun shimmerEffect(show: Boolean) {
         if (show) {
+            shimmer_view_container.visibility = View.VISIBLE
             shimmer_view_container.startShimmerAnimation()
         } else {
+            shimmer_view_container.visibility = View.GONE
             shimmer_view_container.stopShimmerAnimation()
         }
     }

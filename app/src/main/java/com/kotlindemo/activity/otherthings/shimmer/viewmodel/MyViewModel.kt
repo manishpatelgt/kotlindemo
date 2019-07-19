@@ -44,7 +44,7 @@ class MyViewModel constructor(private val recipeDataRepository: RecipeDataReposi
             when (val result = recipeDataRepository.getRecipes()) {
                 is Result.Success -> {
                     isLoading.value = false
-                    recipeList?.value = result.data.toString()
+                    recipeList?.value = result.data
                 }
                 is Result.Error -> {
                     apiError.value = result.exception.message

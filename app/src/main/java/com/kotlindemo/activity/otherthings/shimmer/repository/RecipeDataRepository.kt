@@ -1,8 +1,8 @@
 package com.kotlindemo.activity.otherthings.shimmer.repository
 
-import com.kotlindemo.activity.networklibs.retrofitdemo2.utils.safeApiCall
-import com.kotlindemo.activity.networklibs.retrofitdemo2.webservice.MovieResponse
-import com.kotlindemo.activity.networklibs.retrofitdemo2.webservice.Result
+import com.kotlindemo.activity.otherthings.shimmer.models.Recipe
+import com.kotlindemo.activity.otherthings.shimmer.utils.safeApiCall
+import com.kotlindemo.activity.otherthings.shimmer.models.Result
 import com.kotlindemo.activity.otherthings.shimmer.webservice.RetrofitFactory
 import com.kotlindemo.activity.otherthings.shimmer.webservice.RetrofitService
 import java.io.IOException
@@ -28,11 +28,11 @@ class RecipeDataRepository constructor(private val retrofitService: RetrofitServ
         errorMessage = "Error occurred"
     )
 
-    suspend fun makeAPIRecipeCall(): Result<MovieResponse> {
+    suspend fun makeAPIRecipeCall(): Result<List<Recipe>> {
         val response = retrofitService.getRecipes().await()
         if (response.isSuccessful)
             return Result.Success(response.body()!!)
-        return Result.Error(IOException("Error occurred during fetching movies!"))
+        return Result.Error(IOException("Error occurred during fetching recipes!"))
     }
 
 }
