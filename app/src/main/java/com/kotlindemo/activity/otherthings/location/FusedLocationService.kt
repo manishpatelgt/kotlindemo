@@ -137,10 +137,9 @@ class FusedLocationService : Service() {
     private fun createLocationRequest() {
         locationRequest = LocationRequest()
         locationRequest?.let {
-            it.priority = LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY
+            it.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
             it.interval = 5000.toLong()  // 5 seconds, in milliseconds
-            it.fastestInterval =
-                5000.toLong() // the fastest rate in milliseconds at which your app can handle location updates // 1 second, in milliseconds
+            it.fastestInterval = 5000.toLong() // the fastest rate in milliseconds at which your app can handle location updates // 1 second, in milliseconds
         }
     }
 

@@ -16,6 +16,7 @@ import com.kotlindemo.application.ParentActivity
 import com.kotlindemo.utility.ToastManager
 import com.kotlindemo.utility.isAtLeastAndroid8
 import kotlinx.android.synthetic.main.activity_location.*
+import org.slf4j.LoggerFactory
 
 /**
  * Created by Manish Patel on 7/5/2019.
@@ -31,6 +32,7 @@ import kotlinx.android.synthetic.main.activity_location.*
 class LocationDemoActivity : ParentActivity() {
 
     companion object {
+        private val logger = LoggerFactory.getLogger(LocationDemoActivity::class.java)
         var gpsService: FusedLocationService? = null
         var mTracking = false
         val TAG: String = LocationDemoActivity.javaClass::class.java.simpleName
@@ -44,7 +46,11 @@ class LocationDemoActivity : ParentActivity() {
 
         startButton.setOnClickListener {
             startLocationService()
-            startLocationUpdateService()
+
+            logger.debug("START THE FOREGROUND SERVICE ON DEMAND")
+            actionOnService(Actions.START)
+
+            //startLocationUpdateService()
             mTracking = true
             toggleButtons()
         }
@@ -52,7 +58,25 @@ class LocationDemoActivity : ParentActivity() {
         stopButton.setOnClickListener {
             mTracking = false
             stopLocationService()
+
+            logger.debug("STOP THE FOREGROUND SERVICE ON DEMAND")
+            actionOnService(Actions.STOP)
+
             toggleButtons()
+        }
+    }
+
+    private fun actionOnService(action: Actions) {
+        if (getServiceState(this) == ServiceState.STOPPED && action == Actions.STOP) return
+        Intent(this, EndlessService::class.java).also {
+            it.action = action.name
+            if (isAtLeastAndroid8()) {
+                logger.debug("Starting the service in >=26 Mode")
+                startForegroundService(it)
+                return
+            }
+            logger.debug("Starting the service in < 26 Mode")
+            startService(it)
         }
     }
 
