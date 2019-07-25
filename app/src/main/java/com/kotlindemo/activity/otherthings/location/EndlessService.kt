@@ -96,16 +96,6 @@ class EndlessService : Service() {
     private var scheduler: ScheduledExecutorService? = Executors.newSingleThreadScheduledExecutor()
 
     val saveHHLocation = Runnable {
-
-        // we need this lock so our service gets not affected by Doze Mode
-        wakeLock =
-            (getSystemService(Context.POWER_SERVICE) as PowerManager).run {
-                newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "EndlessService::lock").apply {
-                    acquire()
-                }
-            }
-
-
         logger.debug("inside saveHHLocation")
         logger.debug("Location ready to send ${DemoApplication.currentLocation.toString()}")
     }
