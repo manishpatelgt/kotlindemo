@@ -1,17 +1,25 @@
 package com.kotlindemo.activity.otherthings.location
 
 import android.Manifest
+import android.app.Activity
 import android.content.ComponentName
 import android.content.Intent
 import android.content.ServiceConnection
+import android.net.Uri
 import android.os.Bundle
 import android.os.IBinder
+import android.provider.Settings
+import android.widget.Toast
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.kotlindemo.R
+import com.kotlindemo.activity.architecture.room.NewWordActivity
+import com.kotlindemo.activity.architecture.room.RoomActivity
+import com.kotlindemo.activity.architecture.room.entity.Word
+import com.kotlindemo.application.DemoApplication
 import com.kotlindemo.application.ParentActivity
 import com.kotlindemo.utility.ToastManager
 import com.kotlindemo.utility.isAtLeastAndroid8
@@ -37,6 +45,10 @@ class LocationDemoActivity : ParentActivity() {
         var gpsService: FusedLocationService? = null
         var mTracking = false
         val TAG: String = LocationDemoActivity.javaClass::class.java.simpleName
+
+        private val POWER_WHITELIST = 1925
+        private val DATA_SAVER_WHITELIST = 1926
+        private val BATTERY_SAVER_WHITELIST = 1927
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,6 +56,13 @@ class LocationDemoActivity : ParentActivity() {
         setContentView(R.layout.activity_location)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        startActivityForResult(
+            Intent(
+                Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
+                Uri.parse("package:$packageName")
+            ), BATTERY_SAVER_WHITELIST
+        )
 
         startButton.setOnClickListener {
             startLocationService()
@@ -67,6 +86,21 @@ class LocationDemoActivity : ParentActivity() {
         }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        when (requestCode) {
+            DATA_SAVER_WHITELIST -> {
+                if (resultCode == Activity.RESULT_OK) {
+                } else {
+                    ToastManager.getInstance().showToast("DATA_SAVER_WHITELIST RESULT_CANCELED")
+                }
+            }
+            BATTERY_SAVER_WHITELIST -> ToastManager.getInstance().showToast("BATTERY_SAVER_WHITELIST")
+        }
+    }
+
+
     private fun actionOnService(action: Actions) {
         if (getServiceState(this) == ServiceState.STOPPED && action == Actions.STOP) return
         Intent(this, EndlessService::class.java).also {
@@ -84,6 +118,12 @@ class LocationDemoActivity : ParentActivity() {
     fun stopLocationService() {
         Utils.getInstance().stopTracking()
 
+        //timer task
+        //DemoApplication.getInstance().stopLocationTimerScheduler()
+
+        //startScheduler
+        //DemoApplication.getInstance().stopScheduler()
+
         //stopService(Intent(applicationContext, FusedLocationService::class.java))
         //stopService(Intent(applicationContext, LocationUpdateService::class.java))
     }
@@ -91,6 +131,12 @@ class LocationDemoActivity : ParentActivity() {
     fun startLocationService() {
 
         Utils.getInstance().startTracking()
+
+        //timer task
+        //DemoApplication.getInstance().startLocationTimerScheduler()
+
+        //startScheduler
+        //DemoApplication.getInstance().startScheduler()
 
         /*if (isAtLeastAndroid8()) {
             startForegroundService(Intent(applicationContext, FusedLocationService::class.java))
@@ -100,7 +146,7 @@ class LocationDemoActivity : ParentActivity() {
 
         /*val intent = Intent(this.application, FusedLocationService::class.java)
         this.application.startService(intent)
-//        this.getApplication().startForegroundService(intent);
+    //        this.getApplication().startForegroundService(intent);
         this.application.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE)*/
     }
 

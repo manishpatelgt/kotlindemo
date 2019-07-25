@@ -16,7 +16,19 @@ import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
 import com.kotlindemo.utility.ToastManager
 import android.R.attr.start
+import android.content.Intent
+import android.os.Build
+import android.os.PowerManager
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.kotlindemo.BuildConfig
+import com.kotlindemo.activity.otherthings.location.EndlessService
+import com.kotlindemo.appconstants.Consts
+import org.slf4j.LoggerFactory
+import java.sql.Timestamp
+import java.util.*
+import java.util.concurrent.Executors
+import java.util.concurrent.ScheduledExecutorService
+import java.util.concurrent.TimeUnit
 
 
 /**
@@ -94,7 +106,66 @@ class DemoApplication : MultiDexApplication(), LifecycleObserver, Application.Ac
         ToastManager.getInstance().showToast("onActivityCreated")
     }
 
+    fun isBatterySavingWhitelistEnabled(): Boolean {
+        // Note this setting is only available on Android 6 (SDK 23) and above
+        var isBatterySavingWhiteListed = true
+        if (Build.VERSION.SDK_INT >= 23) {
+            val pm = getSystemService(Context.POWER_SERVICE) as PowerManager
+            val res = pm.isIgnoringBatteryOptimizations(BuildConfig.APPLICATION_ID)
+            isBatterySavingWhiteListed = res
+        }
+        return isBatterySavingWhiteListed
+    }
+    private var scheduler: ScheduledExecutorService? = Executors.newSingleThreadScheduledExecutor()
+
+    fun startScheduler() {
+        scheduler?.let { it.shutdown() }
+        scheduler = Executors.newSingleThreadScheduledExecutor()
+        scheduler!!.scheduleAtFixedRate(saveHHLocation, 0, 10, TimeUnit.SECONDS)
+    }
+
+    fun stopScheduler() {
+        scheduler?.let {
+            scheduler!!.shutdown()
+        }
+    }
+
+    val saveHHLocation = Runnable {
+        logger.debug("inside saveHHLocation")
+        logger.debug("Location ready to send ${DemoApplication.currentLocation.toString()}")
+    }
+
+    private var locationTimerTask: LocationSendTimerTask? = null
+    private var locationSendTimer: Timer? = null
+
+    fun startLocationTimerScheduler() {
+        locationSendTimer = Timer()
+        locationTimerTask = LocationSendTimerTask()
+        locationSendTimer!!.schedule(locationTimerTask, 0, 10 * 1000)
+    }
+
+    fun stopLocationTimerScheduler() {
+        if (locationTimerTask != null) {
+            locationTimerTask!!.cancel()
+            locationTimerTask = null
+        }
+
+        if (locationSendTimer != null) {
+            locationSendTimer!!.cancel()
+            locationSendTimer = null
+        }
+    }
+
+    internal inner class LocationSendTimerTask : TimerTask() {
+        override fun run() {
+            logger.debug("inside LocationSendTimerTask")
+            logger.debug("Location ready to send ${currentLocation.toString()}")
+        }
+    }
+
     companion object {
+
+        private val logger = LoggerFactory.getLogger(DemoApplication::class.java)
 
         // Needs to be volatile as another thread can see a half initialised instance.
         @SuppressLint("StaticFieldLeak")
