@@ -1,12 +1,19 @@
 package com.kotlindemo.application
 
+import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import com.kotlindemo.activity.otherthings.location.Utils
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import org.slf4j.LoggerFactory
 
 open class ParentActivity : AppCompatActivity() {
+
+    companion object {
+        private val logger = LoggerFactory.getLogger(ParentActivity::class.java)
+    }
 
     // dispatches execution into Android main UI thread
     val uiDispatcher: CoroutineDispatcher = Dispatchers.Main
@@ -23,5 +30,10 @@ open class ParentActivity : AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        logger.error("ParentActivity onDestroy()")
     }
 }

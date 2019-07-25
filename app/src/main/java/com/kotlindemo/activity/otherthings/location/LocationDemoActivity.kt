@@ -28,6 +28,7 @@ import org.slf4j.LoggerFactory
 //https://github.com/googlesamples/android-play-location
 //https://developer.android.com/preview/privacy/device-location
 //https://www.freakyjolly.com/android-background-geolocation-service-without-any-kill/
+//https://robertohuertas.com/2019/06/29/android_foreground_services/
 
 class LocationDemoActivity : ParentActivity() {
 
@@ -81,17 +82,21 @@ class LocationDemoActivity : ParentActivity() {
     }
 
     fun stopLocationService() {
-        stopService(Intent(applicationContext, FusedLocationService::class.java))
-        stopService(Intent(applicationContext, LocationUpdateService::class.java))
+        Utils.getInstance().stopTracking()
+
+        //stopService(Intent(applicationContext, FusedLocationService::class.java))
+        //stopService(Intent(applicationContext, LocationUpdateService::class.java))
     }
 
     fun startLocationService() {
 
-        if (isAtLeastAndroid8()) {
+        Utils.getInstance().startTracking()
+
+        /*if (isAtLeastAndroid8()) {
             startForegroundService(Intent(applicationContext, FusedLocationService::class.java))
         } else {
             startService(Intent(applicationContext, FusedLocationService::class.java))
-        }
+        }*/
 
         /*val intent = Intent(this.application, FusedLocationService::class.java)
         this.application.startService(intent)

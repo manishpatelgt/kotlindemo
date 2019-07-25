@@ -44,9 +44,7 @@ class EndlessService : Service() {
                 else -> logger.debug("This should never happen. No action in the received intent")
             }
         } else {
-            logger.debug(
-                "with a null intent. It has been probably restarted by the system."
-            )
+            logger.debug("with a null intent. It has been probably restarted by the system.")
         }
         // by returning this we make sure the service is restarted if the system kills the service
         return START_STICKY
@@ -99,14 +97,7 @@ class EndlessService : Service() {
 
     val saveHHLocation = Runnable {
         logger.debug("inside saveHHLocation")
-        if (NetworkHelper.connectedToNetwork(applicationContext)) {
-            //logger.debug("Internet found")
-            DemoApplication.currentLocation?.let {
-                //logger.debug("Location ready to send ${DemoApplication.currentLocation.toString()}")
-            }
-        } else {
-            //logger.debug("Internet not found")
-        }
+        logger.debug("Location ready to send ${DemoApplication.currentLocation.toString()}")
     }
 
     private fun pingFakeServer() {

@@ -8,6 +8,8 @@ import android.os.IBinder
 import com.google.android.gms.location.*
 import org.slf4j.LoggerFactory
 import android.app.PendingIntent
+import android.content.Context
+import android.os.PowerManager
 
 /**
  * Created by Manish Patel on 1/10/2019.
@@ -44,7 +46,17 @@ class FusedLocationService : Service() {
         return Service.START_STICKY
     }
 
+    private var wakeLock: PowerManager.WakeLock? = null
+
     fun startTracking() {
+        // we need this lock so our service gets not affected by Doze Mode
+        wakeLock =
+            (getSystemService(Context.POWER_SERVICE) as PowerManager).run {
+                newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "FusedLocationService::lock").apply {
+                    acquire()
+                }
+            }
+
         // no need to start processing a new location.
         //if (!currentlyProcessingLocation) {
         currentlyProcessingLocation = true
@@ -55,8 +67,17 @@ class FusedLocationService : Service() {
 
     fun stopTracking() {
         stopLocationUpdates()
-        stopForeground(true)
-        stopSelf()
+        try {
+            wakeLock?.let {
+                if (it.isHeld) {
+                    it.release()
+                }
+            }
+            stopForeground(true)
+            stopSelf()
+        } catch (e: Exception) {
+            logger.error("Service stopped without being started: ${e.message}")
+        }
     }
 
     override fun onDestroy() {
@@ -139,7 +160,8 @@ class FusedLocationService : Service() {
         locationRequest?.let {
             it.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
             it.interval = 5000.toLong()  // 5 seconds, in milliseconds
-            it.fastestInterval = 5000.toLong() // the fastest rate in milliseconds at which your app can handle location updates // 1 second, in milliseconds
+            it.fastestInterval =
+                5000.toLong() // the fastest rate in milliseconds at which your app can handle location updates // 1 second, in milliseconds
         }
     }
 
