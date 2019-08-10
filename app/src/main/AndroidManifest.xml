@@ -201,6 +201,10 @@
             android:label="@string/rxjava_activity_title"
             android:theme="@style/Theme.MyApp" />
         <activity
+            android:name="com.kotlindemo.activity.otherthings.ui.AutoTextViewDemoActivity"
+            android:label="@string/auto_size_textview_activity_title"
+            android:theme="@style/Theme.MyApp" />
+        <activity
             android:name="com.kotlindemo.activity.architecture.navigation.NavigationDemoActivity"
             android:label="@string/navigation_activity_title"
             android:theme="@style/Theme.MyApp">

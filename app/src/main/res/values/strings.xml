@@ -33,6 +33,7 @@
     <string name="app_updates_activity_title">In AppUpdates Demo</string>
     <string name="navigation_activity_title">Navigation Demo</string>
     <string name="rxjava_activity_title">RxJava Demo</string>
+    <string name="auto_size_textview_activity_title">AutoSize TextView Demo</string>
 
     <string name="button_download_img">Download Image</string>
     <string name="button_download_song">Download Song</string>
@@ -62,6 +63,7 @@
     <string name="button_network">Network Libs</string>
     <string name="button_other">Other things</string>
     <string name="button_shimmer_demo">Shimmer Effect</string>
+    <string name="button_auto_textview_size_demo">TextView AutoSize</string>
 
     <string name="button_get_post">Get Posts</string>
     <string name="button_get_movies">Get Movies</string>
@@ -91,4 +93,5 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="hello_mindorks">Hello Mindorks!!</string>
 </resources>
