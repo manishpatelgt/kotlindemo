@@ -3,7 +3,6 @@ https://constraintlayout.com/layouts/relativelayout.html
 #Learn how to use LiveData
 http://jensklin.triangulum.uberspace.de/learn-how-to-use-livedata/
 
-
 #MotionLayout
 https://proandroiddev.com/exploring-motionlayout-keycycle-b990d9cef5bf
 https://www.androidauthority.com/motionlayout-animations-android-apps-896717/
@@ -34,6 +33,7 @@ https://fbflipper.com/docs/getting-started.html#setup-your-android-app
 https://medium.com/@vigneshmca2k13/implementing-and-testing-in-app-update-in-android-d52680ecdcc7
 https://blog.mindorks.com/implementing-in-app-updates-on-android
 https://stackoverflow.com/questions/55939853/how-to-work-with-androids-in-app-update-api
+//https://github.com/dhruvtaneja/flexi-update
 
 #Codelab
 https://codelabs.developers.google.com/?cat=Android
@@ -52,5 +52,10 @@ https://medium.com/mindorks/android-design-shimmer-effect-fa7f74c68a93
 https://github.com/CodingInfinite/FacebookShimmerEffect
 https://github.com/facebook/shimmer-android
 
-//End less foreground service
+#End less foreground service
 https://robertohuertas.com/2019/06/29/android_foreground_services/
+https://stackoverflow.com/questions/49637967/minimal-android-foreground-service-killed-on-high-end-phone
+https://stackoverflow.com/questions/53746097/unable-to-initiate-workmanager-from-a-separate-process
+
+#Mockito
+https://blog.mindorks.com/using-mockito-in-android-unit-testing-as-a-pro

@@ -23,6 +23,7 @@ import kotlinx.android.synthetic.main.activity_app_updates.*
 //https://medium.com/@vigneshmca2k13/implementing-and-testing-in-app-update-in-android-d52680ecdcc7
 //https://blog.mindorks.com/implementing-in-app-updates-on-android
 //https://stackoverflow.com/questions/55939853/how-to-work-with-androids-in-app-update-api
+//https://github.com/dhruvtaneja/flexi-update
 
 class AppUpdatesDemoActivity : ParentActivity() {
 

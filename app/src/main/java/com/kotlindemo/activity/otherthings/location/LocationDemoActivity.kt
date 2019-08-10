@@ -57,12 +57,14 @@ class LocationDemoActivity : ParentActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        startActivityForResult(
-            Intent(
-                Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
-                Uri.parse("package:$packageName")
-            ), BATTERY_SAVER_WHITELIST
-        )
+        if (!DemoApplication.getInstance().isBatterySavingWhitelistEnabled()) {
+            startActivityForResult(
+                Intent(
+                    Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
+                    Uri.parse("package:$packageName")
+                ), BATTERY_SAVER_WHITELIST
+            )
+        }
 
         startButton.setOnClickListener {
             startLocationService()
