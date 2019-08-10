@@ -2,6 +2,7 @@ package com.kotlindemo.activity.otherthings
 
 import android.os.Bundle
 import com.kotlindemo.R
+import com.kotlindemo.activity.otherthings.firebaseremoteconfig.FireBaseRemoteConfigActivity
 import com.kotlindemo.activity.otherthings.inappupdates.AppUpdatesDemoActivity
 import com.kotlindemo.activity.otherthings.location.LocationDemoActivity
 import com.kotlindemo.activity.otherthings.rxjava.ui.RxJavaDemoActivity
@@ -41,6 +42,10 @@ class OtherThingsActivity : ParentActivity() {
 
         autotextview_button.setOnClickListener {
             startActivity<AutoTextViewDemoActivity>()
+        }
+
+        firebase_button.setOnClickListener {
+            startActivity<FireBaseRemoteConfigActivity>()
         }
     }
 }

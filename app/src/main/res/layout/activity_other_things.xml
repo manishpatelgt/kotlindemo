@@ -79,7 +79,7 @@
                 android:layout_margin="10dp"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="@string/button_shimmer_demo"
+                android:text="@string/button_shimmer"
                 android:textColor="@color/white"
                 android:textSize="21sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -93,12 +93,27 @@
                 android:layout_margin="10dp"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="@string/button_auto_textview_size_demo"
+                android:text="@string/button_auto_textview_size"
                 android:textColor="@color/white"
                 android:textSize="21sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/shimmer_button" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/firebase_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/button_firebase"
+                android:textColor="@color/white"
+                android:textSize="21sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/autotextview_button" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

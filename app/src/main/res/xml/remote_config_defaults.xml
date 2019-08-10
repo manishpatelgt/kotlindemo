@@ -1,10 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- START xml_defaults -->
+<?xml version="1.0" encoding="utf-8"?><!-- START xml_defaults -->
 <defaultsMap>
     <entry>
         <key>app_update_type</key>
         <value>0</value>
     </entry>
 
-</defaultsMap>
-    <!-- END xml_defaults -->
+    <entry>
+        <key>app_background_color</key>
+        <value>#4285F4</value>
+    </entry>
+    <entry>
+        <key>app_main_text_view</key>
+        <value>Firebase Remote Config</value>
+    </entry>
+    <entry>
+        <key>app_sub_text_view</key>
+        <value>Learning Firebase Remote Config</value>
+    </entry>
+
+</defaultsMap><!-- END xml_defaults -->
