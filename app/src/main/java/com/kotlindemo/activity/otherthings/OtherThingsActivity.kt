@@ -14,8 +14,7 @@ import org.jetbrains.anko.startActivity
 /**
  * Created by Manish Patel on 7/18/2019.
  */
-//End less foreground service
-//https://robertohuertas.com/2019/06/29/android_foreground_services/
+
 class OtherThingsActivity : ParentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
