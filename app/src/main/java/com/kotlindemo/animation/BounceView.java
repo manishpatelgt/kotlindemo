@@ -215,7 +215,7 @@ public class BounceView implements BounceViewAnim {
         startAnimScale2(v, 1f, 1f, popOutAnimDuration, popOutInterpolator, popOutAnimDuration + 1);
     }
 
-    private static void startAnimScale2(View view, float scaleX, float scaleY,
+    private static void startAnimScale2(final View view, float scaleX, float scaleY,
                                         int animDuration,
                                         AccelerateDecelerateInterpolator interpolator,
                                         int startDelay) {
@@ -230,13 +230,6 @@ public class BounceView implements BounceViewAnim {
         animatorSet.playTogether(animX, animY);
         animatorSet.setStartDelay(startDelay);
         animatorSet.start();
-
-        animatorSet.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                startContinueAnimation(v);
-            }
-        });
     }
 
     private void startAnimScale(View view, float scaleX, float scaleY,
