@@ -14,6 +14,7 @@
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     <LinearLayout
+        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -42,11 +43,13 @@
     </LinearLayout>
 
     <View
+        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="5dp"
         android:background="@color/blue2" />
 
     <LinearLayout
+        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -80,7 +83,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bounceButton"
-        android:layout_width="match_parent"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="10dp"
