@@ -1,8 +1,11 @@
 package com.kotlindemo.animation;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Dialog;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +17,12 @@ import com.google.android.material.tabs.TabLayout;
 import com.kotlindemo.R;
 
 import java.lang.ref.WeakReference;
+import java.util.logging.Handler;
 
 /**
  * Created by Manish Patel on 8/23/2019.
  */
-public class BounceView implements BounceViewAnim{
+public class BounceView implements BounceViewAnim {
 
     public static final float PUSH_IN_SCALE_X = 0.9f;
     public static final float PUSH_IN_SCALE_Y = 0.9f;
@@ -46,7 +50,7 @@ public class BounceView implements BounceViewAnim{
     private BounceView(View view) {
         this.view = new WeakReference<View>(view);
         if (this.view.get() != null) {
-            if(!this.view.get().hasOnClickListeners()) {
+            if (!this.view.get().hasOnClickListeners()) {
                 this.view.get().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -140,14 +144,17 @@ public class BounceView implements BounceViewAnim{
                     if (action == MotionEvent.ACTION_DOWN) {
                         isTouchInsideView = true;
 
+                        Log.e("BounceView", " MotionEvent.ACTION_DOWN");
+
                         startAnimScale(v, pushInScaleX, pushInScaleY, pushInAnimDuration, pushInInterpolator, 0);
 
                     } else if (action == MotionEvent.ACTION_UP) {
+                        Log.e("BounceView", " MotionEvent.ACTION_UP");
+
                         if (isTouchInsideView) {
                             v.animate().cancel();
 
                             startAnimScale(v, popOutScaleX, popOutScaleY, popOutAnimDuration, popOutInterpolator, 0);
-
                             startAnimScale(v, 1f, 1f, popOutAnimDuration, popOutInterpolator, popOutAnimDuration + 1);
 
                             return false;
@@ -189,6 +196,49 @@ public class BounceView implements BounceViewAnim{
         }
     }
 
+    public static void startContinueAnimation(View v) {
+        final int PUSH_IN_ANIM_DURATION = 500;
+        final int POP_OUT_ANIM_DURATION = 500;
+        float pushInScaleX = PUSH_IN_SCALE_X;
+        float pushInScaleY = PUSH_IN_SCALE_Y;
+        float popOutScaleX = POP_OUT_SCALE_X;
+        float popOutScaleY = POP_OUT_SCALE_Y;
+        int pushInAnimDuration = PUSH_IN_ANIM_DURATION;
+        int popOutAnimDuration = POP_OUT_ANIM_DURATION;
+
+        AccelerateDecelerateInterpolator pushInInterpolator = DEFAULT_INTERPOLATOR;
+        AccelerateDecelerateInterpolator popOutInterpolator = DEFAULT_INTERPOLATOR;
+
+        v.animate().cancel();
+        startAnimScale2(v, pushInScaleX, pushInScaleY, pushInAnimDuration, pushInInterpolator, 0);
+        startAnimScale2(v, popOutScaleX, popOutScaleY, popOutAnimDuration, popOutInterpolator, 0);
+        startAnimScale2(v, 1f, 1f, popOutAnimDuration, popOutInterpolator, popOutAnimDuration + 1);
+    }
+
+    private static void startAnimScale2(View view, float scaleX, float scaleY,
+                                        int animDuration,
+                                        AccelerateDecelerateInterpolator interpolator,
+                                        int startDelay) {
+        ObjectAnimator animX = ObjectAnimator.ofFloat(view, "scaleX", scaleX);
+        ObjectAnimator animY = ObjectAnimator.ofFloat(view, "scaleY", scaleY);
+        AnimatorSet animatorSet = new AnimatorSet();
+        animX.setDuration(animDuration);
+        animX.setInterpolator(interpolator);
+        animY.setDuration(animDuration);
+        animY.setInterpolator(interpolator);
+
+        animatorSet.playTogether(animX, animY);
+        animatorSet.setStartDelay(startDelay);
+        animatorSet.start();
+
+        animatorSet.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                startContinueAnimation(v);
+            }
+        });
+    }
+
     private void startAnimScale(View view, float scaleX, float scaleY,
                                 int animDuration,
                                 AccelerateDecelerateInterpolator interpolator,
@@ -222,7 +272,7 @@ public class BounceView implements BounceViewAnim{
     private void setAnimToTabLayout() {
         if (tabLayout.get() != null) {
 
-            for(int i = 0; i < tabLayout.get().getTabCount(); i++) {
+            for (int i = 0; i < tabLayout.get().getTabCount(); i++) {
 
                 final TabLayout.Tab tab = tabLayout.get().getTabAt(i);
                 View tabView = ((ViewGroup) tabLayout.get().getChildAt(0)).getChildAt(i);

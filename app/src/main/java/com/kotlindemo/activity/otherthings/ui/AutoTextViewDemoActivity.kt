@@ -1,14 +1,15 @@
 package com.kotlindemo.activity.otherthings.ui
 
 import android.os.Bundle
+import android.os.Handler
 import com.kotlindemo.R
 import com.kotlindemo.application.ParentActivity
 import kotlinx.android.synthetic.main.activity_auto_textview.*
 import kotlinx.android.synthetic.main.activity_auto_textview.toolbar
 import android.view.animation.Animation
-import com.kotlindemo.utility.MyBounceInterpolator
-import android.view.animation.AnimationUtils
 import com.kotlindemo.animation.BounceView
+import android.view.animation.ScaleAnimation
+import kotlinx.android.synthetic.main.activity_motion_3.*
 
 /**
  * Created by Manish Patel on 8/10/2019.
@@ -22,23 +23,37 @@ class AutoTextViewDemoActivity : ParentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_auto_textview)
+        setContentView(com.kotlindemo.R.layout.activity_auto_textview)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         // Load the animation
-        val myAnim = AnimationUtils.loadAnimation(this,R.anim.bounce)
-        //val animationDuration = 3 * 1000
-        //myAnim.duration = animationDuration.toLong()
+        //val myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce_3)
 
-        // Use custom animation interpolator to achieve the bounce effect
-        val interpolator = MyBounceInterpolator(0.2, 20.0)
-        //myAnim.interpolator = interpolator
+        val myAnim = ScaleAnimation(
+            0f,
+            1f,
+            0f,
+            1f,
+            Animation.RELATIVE_TO_SELF,
+            0.5f,
+            Animation.RELATIVE_TO_SELF,
+            0.5f
+        )
+        myAnim.duration = 1000
+        myAnim.fillAfter = true
 
+        //bounce1 button animation
         BounceView.addAnimTo(bounceButton)
         bounceButton.setOnClickListener {
             BounceView.addAnimTo(bounceButton)
-            //bounceButton.startAnimation(myAnim)
+        }
+
+        //start button2 animation
+        bounceButton2.setOnClickListener {
+            startContinueAnimation()
+            //stop as soon as you press
+            //BounceView.startContinueAnimation(bounceButton2)
         }
 
         // Run button animation again after it finished
@@ -46,8 +61,28 @@ class AutoTextViewDemoActivity : ParentActivity() {
             override fun onAnimationStart(arg0: Animation) {}
             override fun onAnimationRepeat(arg0: Animation) {}
             override fun onAnimationEnd(arg0: Animation) {
-                //bounceButton.clearAnimation()
+                bounceButton2.startAnimation(myAnim)
             }
         })
+    }
+
+    fun startContinueAnimation() {
+        val mHandler = Handler()
+
+        val runnableCode = object : Runnable {
+            override fun run() {
+                BounceView.startContinueAnimation(bounceButton2)
+                mHandler.postDelayed(this, 1000)
+            }
+        }
+
+        mHandler.post(runnableCode)
+
+        /*val mHandler = Handler()
+        val mRunnable = Runnable {
+            BounceView.startContinueAnimation(bounceButton2)
+            mHandler.postDelayed(mRunnable, 2000)
+        }
+        mHandler.postDelayed(mRunnable, 2000)*/
     }
 }
