@@ -42,11 +42,11 @@ class AutoTextViewDemoActivity : ParentActivity() {
         )
         myAnim.duration = 1000
         myAnim.fillAfter = true
-
+        BounceView.addAnimTo(bounceButton)
         //bounce1 button animation
         BounceView.addAnimTo(bounceButton)
         bounceButton.setOnClickListener {
-            BounceView.addAnimTo(bounceButton)
+
         }
 
         //start button2 animation

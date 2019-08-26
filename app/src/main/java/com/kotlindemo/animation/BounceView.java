@@ -61,38 +61,9 @@ public class BounceView implements BounceViewAnim {
         }
     }
 
-    private BounceView(Dialog dialog) {
-        this.dialog = new WeakReference<Dialog>(dialog);
-    }
-
-    private BounceView(PopupWindow popup) {
-        this.popup = new WeakReference<PopupWindow>(popup);
-    }
-
-    private BounceView(TabLayout tabLayout) {
-        this.tabLayout = new WeakReference<TabLayout>(tabLayout);
-    }
-
-
     public static BounceView addAnimTo(View view) {
         BounceView bounceAnim = new BounceView(view);
         bounceAnim.setAnimToView();
-        return bounceAnim;
-    }
-
-    public static void addAnimTo(Dialog dialog) {
-        BounceView bounceAnim = new BounceView(dialog);
-        bounceAnim.setAnimToDialog();
-    }
-
-    public static void addAnimTo(PopupWindow popupWindow) {
-        BounceView bounceAnim = new BounceView(popupWindow);
-        bounceAnim.setAnimToPopup();
-    }
-
-    public static BounceView addAnimTo(TabLayout tabLayout) {
-        BounceView bounceAnim = new BounceView(tabLayout);
-        bounceAnim.setAnimToTabLayout();
         return bounceAnim;
     }
 
@@ -249,87 +220,4 @@ public class BounceView implements BounceViewAnim {
         animatorSet.start();
     }
 
-    private void setAnimToDialog() {
-        if (dialog.get() != null) {
-            Window dialogWindow = dialog.get().getWindow();
-            //dialogWindow.setWindowAnimations(R.style.CustomDialogAnimation);
-        }
-    }
-
-    private void setAnimToPopup() {
-        if (popup.get() != null) {
-            //popup.get().setAnimationStyle(R.style.CustomDialogAnimation);
-        }
-    }
-
-    private void setAnimToTabLayout() {
-        if (tabLayout.get() != null) {
-
-            for (int i = 0; i < tabLayout.get().getTabCount(); i++) {
-
-                final TabLayout.Tab tab = tabLayout.get().getTabAt(i);
-                View tabView = ((ViewGroup) tabLayout.get().getChildAt(0)).getChildAt(i);
-
-                tabView.setOnTouchListener(new View.OnTouchListener() {
-                    @Override
-                    public boolean onTouch(View v, MotionEvent motionEvent) {
-
-                        int action = motionEvent.getAction();
-
-                        if (action == MotionEvent.ACTION_DOWN) {
-                            isTouchInsideView = true;
-
-                            startAnimScale(v, pushInScaleX, pushInScaleY, pushInAnimDuration, pushInInterpolator, 0);
-
-                            return true;
-
-                        } else if (action == MotionEvent.ACTION_UP) {
-                            if (isTouchInsideView) {
-                                v.animate().cancel();
-
-                                startAnimScale(v, popOutScaleX, popOutScaleY, popOutAnimDuration, popOutInterpolator, 0);
-
-                                startAnimScale(v, 1f, 1f, popOutAnimDuration, popOutInterpolator, popOutAnimDuration + 1);
-
-                                tab.select();
-
-                                return false;
-                            }
-                        } else if (action == MotionEvent.ACTION_CANCEL) {
-                            if (isTouchInsideView) {
-                                v.animate().cancel();
-
-                                startAnimScale(v, 1f, 1f, popOutAnimDuration, DEFAULT_INTERPOLATOR, 0);
-
-                            }
-
-                            return true;
-                        } else if (action == MotionEvent.ACTION_MOVE) {
-                            if (isTouchInsideView) {
-                                float currentX = motionEvent.getX();
-                                float currentY = motionEvent.getY();
-                                float currentPosX = currentX + v.getLeft();
-                                float currentPosY = currentY + v.getTop();
-                                float viewLeft = v.getLeft();
-                                float viewTop = v.getTop();
-                                float viewRight = v.getRight();
-                                float viewBottom = v.getBottom();
-                                if (!(currentPosX > viewLeft && currentPosX < viewRight
-                                        && currentPosY > viewTop && currentPosY < viewBottom)) {
-                                    isTouchInsideView = false;
-                                    v.animate().cancel();
-
-                                    startAnimScale(v, 1f, 1f, popOutAnimDuration, DEFAULT_INTERPOLATOR, 0);
-                                }
-
-                                return true;
-                            }
-                        }
-
-                        return false;
-                    }
-                });
-            }
-        }
-    }
 }
