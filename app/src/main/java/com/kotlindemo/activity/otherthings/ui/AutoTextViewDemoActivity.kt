@@ -7,6 +7,7 @@ import com.kotlindemo.application.ParentActivity
 import kotlinx.android.synthetic.main.activity_auto_textview.*
 import kotlinx.android.synthetic.main.activity_auto_textview.toolbar
 import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import com.kotlindemo.animation.BounceView
 import android.view.animation.ScaleAnimation
 import kotlinx.android.synthetic.main.activity_motion_3.*
@@ -28,9 +29,11 @@ class AutoTextViewDemoActivity : ParentActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         // Load the animation
-        //val myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce_3)
+        val myAnim = AnimationUtils.loadAnimation(this, R.anim.grow_from_middle)
+        val myAnim2 = AnimationUtils.loadAnimation(this, R.anim.bounce_4)
+        val myAnim3 = AnimationUtils.loadAnimation(this, R.anim.shrink_grow)
 
-        val myAnim = ScaleAnimation(
+        /*val myAnim = ScaleAnimation(
             0f,
             1f,
             0f,
@@ -41,17 +44,18 @@ class AutoTextViewDemoActivity : ParentActivity() {
             0.5f
         )
         myAnim.duration = 1000
-        myAnim.fillAfter = true
-        BounceView.addAnimTo(bounceButton)
-        //bounce1 button animation
-        BounceView.addAnimTo(bounceButton)
-        bounceButton.setOnClickListener {
+        myAnim.fillAfter = true*/
 
+        //bounce1 button animation
+        //BounceView.addAnimTo(bounceButton)
+        bounceButton.setOnClickListener {
+            bounceButton.startAnimation(myAnim2)
         }
 
         //start button2 animation
         bounceButton2.setOnClickListener {
-            startContinueAnimation()
+            bounceButton2.startAnimation(myAnim3)
+            //startContinueAnimation()
             //stop as soon as you press
             //BounceView.startContinueAnimation(bounceButton2)
         }
@@ -61,7 +65,7 @@ class AutoTextViewDemoActivity : ParentActivity() {
             override fun onAnimationStart(arg0: Animation) {}
             override fun onAnimationRepeat(arg0: Animation) {}
             override fun onAnimationEnd(arg0: Animation) {
-                bounceButton2.startAnimation(myAnim)
+                bounceButton2.startAnimation(myAnim3)
             }
         })
     }
