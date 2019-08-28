@@ -170,10 +170,10 @@ public class BounceView implements BounceViewAnim {
     public static void startContinueAnimation(View v) {
         final int PUSH_IN_ANIM_DURATION = 500;
         final int POP_OUT_ANIM_DURATION = 500;
-        float pushInScaleX = PUSH_IN_SCALE_X;
-        float pushInScaleY = PUSH_IN_SCALE_Y;
-        float popOutScaleX = POP_OUT_SCALE_X;
-        float popOutScaleY = POP_OUT_SCALE_Y;
+        float pushInScaleX = 0.8f;
+        float pushInScaleY = 0.8f;
+        float popOutScaleX = 1.1f;
+        float popOutScaleY = 1.1f;
         int pushInAnimDuration = PUSH_IN_ANIM_DURATION;
         int popOutAnimDuration = POP_OUT_ANIM_DURATION;
 

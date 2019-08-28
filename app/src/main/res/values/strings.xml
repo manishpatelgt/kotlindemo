@@ -10,7 +10,7 @@
     <string name="enter_word_title">Enter Word</string>
 
     <string name="shimmer_effect_activity_title">Shimmer Effect Demo</string>
-
+    <string name="sqldelight_activity_title">SQLDelight Demo</string>
     <string name="camerax_activity_title">CameraX Demo</string>
     <string name="behavior_activity_title">Behavior</string>
     <string name="other_activity_title">Other Important Things</string>
@@ -66,6 +66,7 @@
     <string name="button_shimmer">Shimmer Effect</string>
     <string name="button_auto_textview_size">TextView AutoSize</string>
     <string name="button_firebase">Firebase Remote Config</string>
+    <string name="button_sql_delight">SQLDelight</string>
 
     <string name="button_get_post">Get Posts</string>
     <string name="button_get_movies">Get Movies</string>

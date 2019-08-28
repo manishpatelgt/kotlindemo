@@ -89,6 +89,11 @@
             android:theme="@style/Theme.MyApp" />
 
         <activity
+            android:name="com.kotlindemo.activity.otherthings.sqldelight.SQLDelightDemoActivity"
+            android:label="@string/sqldelight_activity_title"
+            android:theme="@style/Theme.MyApp" />
+
+        <activity
             android:name="com.kotlindemo.activity.otherthings.OtherThingsActivity"
             android:label="@string/other_activity_title"
             android:theme="@style/Theme.MyApp" />

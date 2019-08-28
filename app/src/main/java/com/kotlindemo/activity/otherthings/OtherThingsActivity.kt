@@ -7,6 +7,7 @@ import com.kotlindemo.activity.otherthings.inappupdates.AppUpdatesDemoActivity
 import com.kotlindemo.activity.otherthings.location.LocationDemoActivity
 import com.kotlindemo.activity.otherthings.rxjava.ui.RxJavaDemoActivity
 import com.kotlindemo.activity.otherthings.shimmer.ShimmerDemoActivity
+import com.kotlindemo.activity.otherthings.sqldelight.SQLDelightDemoActivity
 import com.kotlindemo.activity.otherthings.ui.AutoTextViewDemoActivity
 import com.kotlindemo.application.ParentActivity
 import kotlinx.android.synthetic.main.activity_other_things.*
@@ -45,6 +46,10 @@ class OtherThingsActivity : ParentActivity() {
 
         firebase_button.setOnClickListener {
             startActivity<FireBaseRemoteConfigActivity>()
+        }
+
+        sqlidelight_button.setOnClickListener {
+            startActivity<SQLDelightDemoActivity>()
         }
     }
 }

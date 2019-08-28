@@ -100,7 +100,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/shimmer_button" />
 
-
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/firebase_button"
                 android:layout_width="0dp"
@@ -114,6 +113,20 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/autotextview_button" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/sqlidelight_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/button_sql_delight"
+                android:textColor="@color/white"
+                android:textSize="21sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/firebase_button" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

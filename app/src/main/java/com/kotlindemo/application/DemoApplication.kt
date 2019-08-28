@@ -20,6 +20,7 @@ import android.content.Intent
 import android.os.Build
 import android.os.PowerManager
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.facebook.stetho.Stetho
 import com.kotlindemo.BuildConfig
 import com.kotlindemo.activity.otherthings.location.EndlessService
 import com.kotlindemo.appconstants.Consts
@@ -49,6 +50,9 @@ class DemoApplication : MultiDexApplication(), LifecycleObserver, Application.Ac
 
         // initialise app as a singleton
         sInstance = this
+
+        //stetho
+        Stetho.initializeWithDefaults(this)
 
         // Lifecycle observers
         //ProcessLifecycleOwner.get().lifecycle.addObserver(this)
