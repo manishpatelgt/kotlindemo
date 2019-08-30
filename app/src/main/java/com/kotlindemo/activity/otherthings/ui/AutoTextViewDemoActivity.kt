@@ -9,10 +9,10 @@ import kotlinx.android.synthetic.main.activity_auto_textview.toolbar
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import com.kotlindemo.animation.BounceView
-import android.view.animation.ScaleAnimation
-import kotlinx.android.synthetic.main.activity_motion_3.*
 import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 
 /**
  * Created by Manish Patel on 8/10/2019.
@@ -55,9 +55,29 @@ class AutoTextViewDemoActivity : ParentActivity() {
             //bounceButton.startAnimation(myAnim2)
         }
 
-        val animSet = AnimatorInflater.loadAnimator(this, com.kotlindemo.R.animator.animate_s) as AnimatorSet
+        val animSet =
+            AnimatorInflater.loadAnimator(this, com.kotlindemo.R.animator.animate_s) as AnimatorSet
+        val animSet2 =
+            AnimatorInflater.loadAnimator(this, com.kotlindemo.R.animator.animate_s2) as AnimatorSet
+
+        animSet2.setTarget(bounceButton2)
         animSet.setTarget(bounceButton2)
+
         animSet.start()
+
+        animSet.addListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator) {
+                super.onAnimationEnd(animation)
+                animSet2.start()
+            }
+        })
+
+        animSet2.addListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator) {
+                super.onAnimationEnd(animation)
+                animSet.start()
+            }
+        })
 
         //start button2 animation
         bounceButton2.setOnClickListener {
