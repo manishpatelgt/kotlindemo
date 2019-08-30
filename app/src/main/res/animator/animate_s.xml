@@ -1,0 +1,16 @@
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <objectAnimator
+        android:duration="1000"
+        android:repeatCount="1"
+        android:repeatMode="reverse">
+        <propertyValuesHolder
+            android:propertyName="x"
+            android:valueTo="400" />
+        <propertyValuesHolder
+            android:propertyName="y"
+            android:valueTo="200" />
+    </objectAnimator>
+
+</set>
+

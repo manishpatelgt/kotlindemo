@@ -11,6 +11,8 @@ import android.view.animation.AnimationUtils
 import com.kotlindemo.animation.BounceView
 import android.view.animation.ScaleAnimation
 import kotlinx.android.synthetic.main.activity_motion_3.*
+import android.animation.AnimatorInflater
+import android.animation.AnimatorSet
 
 /**
  * Created by Manish Patel on 8/10/2019.
@@ -19,6 +21,7 @@ import kotlinx.android.synthetic.main.activity_motion_3.*
 //https://blog.mindorks.com/autosizing-textview-implementation-for-android
 //edge-to-edge https://blog.mindorks.com/exploring-edge-to-edge-feature-in-android-q
 //BounceView: https://androidexample365.com/customizable-bounce-animation-for-any-view-updation/
+//StateAnimator: https://android.jlelse.eu/polishing-ui-android-statelistanimator-7b74a06b85a5
 
 class AutoTextViewDemoActivity : ParentActivity() {
 
@@ -29,9 +32,9 @@ class AutoTextViewDemoActivity : ParentActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         // Load the animation
-        val myAnim = AnimationUtils.loadAnimation(this, R.anim.grow_from_middle)
-        val myAnim2 = AnimationUtils.loadAnimation(this, R.anim.bounce_4)
-        val myAnim3 = AnimationUtils.loadAnimation(this, R.anim.shrink_grow)
+        val myAnim = AnimationUtils.loadAnimation(this, com.kotlindemo.R.anim.grow_from_middle)
+        val myAnim2 = AnimationUtils.loadAnimation(this, com.kotlindemo.R.anim.bounce_4)
+        val myAnim3 = AnimationUtils.loadAnimation(this, com.kotlindemo.R.anim.shrink_grow)
 
         /*val myAnim = ScaleAnimation(
             0f,
@@ -52,12 +55,16 @@ class AutoTextViewDemoActivity : ParentActivity() {
             //bounceButton.startAnimation(myAnim2)
         }
 
+        val animSet = AnimatorInflater.loadAnimator(this, com.kotlindemo.R.animator.animate_s) as AnimatorSet
+        animSet.setTarget(bounceButton2)
+        animSet.start()
+
         //start button2 animation
         bounceButton2.setOnClickListener {
             //bounceButton2.startAnimation(myAnim3)
             //startContinueAnimation()
             //stop as soon as you press
-            BounceView.startContinueAnimation(bounceButton2)
+            //BounceView.startContinueAnimation(bounceButton2)
         }
 
         // Run button animation again after it finished
