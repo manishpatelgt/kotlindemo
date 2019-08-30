@@ -13,6 +13,8 @@ import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
+import android.widget.Button
+import com.astritveliu.boom.Boom
 
 /**
  * Created by Manish Patel on 8/10/2019.
@@ -48,6 +50,8 @@ class AutoTextViewDemoActivity : ParentActivity() {
         )
         myAnim.duration = 1000
         myAnim.fillAfter = true*/
+
+        Boom(bounceButton3 as Button)
 
         //bounce1 button animation
         //BounceView.addAnimTo(bounceButton)

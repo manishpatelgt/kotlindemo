@@ -137,6 +137,10 @@ dependencies {
 
     //Lottie
     implementation 'com.airbnb.android:lottie:3.0.7'
+
+    //Boom
+    implementation 'com.github.astrit-veliu:Boom:1.0'
+
     //Flipper
     /*debugImplementation 'com.facebook.flipper:flipper:0.21.1'
     debugImplementation 'com.facebook.soloader:soloader:0.5.1'
