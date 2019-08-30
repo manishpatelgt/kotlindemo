@@ -9,6 +9,7 @@
     <string name="main_activity_title">Kotlin Coroutines + Android Arch Components Demos</string>
     <string name="enter_word_title">Enter Word</string>
 
+    <string name="lottie_activity_title">Lottie Animation Demo</string>
     <string name="shimmer_effect_activity_title">Shimmer Effect Demo</string>
     <string name="sqldelight_activity_title">SQLDelight Demo</string>
     <string name="camerax_activity_title">CameraX Demo</string>
@@ -67,6 +68,7 @@
     <string name="button_auto_textview_size">TextView AutoSize</string>
     <string name="button_firebase">Firebase Remote Config</string>
     <string name="button_sql_delight">SQLDelight</string>
+    <string name="button_lottie_animation">Lotti Animation</string>
 
     <string name="button_get_post">Get Posts</string>
     <string name="button_get_movies">Get Movies</string>

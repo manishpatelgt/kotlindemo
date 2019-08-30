@@ -5,6 +5,7 @@ import com.kotlindemo.R
 import com.kotlindemo.activity.otherthings.firebaseremoteconfig.FireBaseRemoteConfigActivity
 import com.kotlindemo.activity.otherthings.inappupdates.AppUpdatesDemoActivity
 import com.kotlindemo.activity.otherthings.location.LocationDemoActivity
+import com.kotlindemo.activity.otherthings.lottie.LottieAnimationDemoActivity
 import com.kotlindemo.activity.otherthings.rxjava.ui.RxJavaDemoActivity
 import com.kotlindemo.activity.otherthings.shimmer.ShimmerDemoActivity
 import com.kotlindemo.activity.otherthings.sqldelight.SQLDelightDemoActivity
@@ -50,6 +51,10 @@ class OtherThingsActivity : ParentActivity() {
 
         sqlidelight_button.setOnClickListener {
             startActivity<SQLDelightDemoActivity>()
+        }
+
+        lottie_button.setOnClickListener {
+            startActivity<LottieAnimationDemoActivity>()
         }
     }
 }

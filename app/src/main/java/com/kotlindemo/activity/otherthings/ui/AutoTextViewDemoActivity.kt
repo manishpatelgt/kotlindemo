@@ -62,7 +62,6 @@ class AutoTextViewDemoActivity : ParentActivity() {
 
         animSet2.setTarget(bounceButton2)
         animSet.setTarget(bounceButton2)
-
         animSet.start()
 
         animSet.addListener(object : AnimatorListenerAdapter() {
@@ -87,7 +86,7 @@ class AutoTextViewDemoActivity : ParentActivity() {
             //BounceView.startContinueAnimation(bounceButton2)
         }
 
-        // Run button animation again after it finished
+        //Run button animation again after it finished
         myAnim.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(arg0: Animation) {}
             override fun onAnimationRepeat(arg0: Animation) {}

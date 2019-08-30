@@ -135,6 +135,8 @@ dependencies {
     implementation "com.squareup.sqldelight:android-driver:1.1.4"
     testImplementation  "com.squareup.sqldelight:android-driver:1.1.4"
 
+    //Lottie
+    implementation 'com.airbnb.android:lottie:3.0.7'
     //Flipper
     /*debugImplementation 'com.facebook.flipper:flipper:0.21.1'
     debugImplementation 'com.facebook.soloader:soloader:0.5.1'
