@@ -49,15 +49,15 @@ class AutoTextViewDemoActivity : ParentActivity() {
         //bounce1 button animation
         //BounceView.addAnimTo(bounceButton)
         bounceButton.setOnClickListener {
-            bounceButton.startAnimation(myAnim2)
+            //bounceButton.startAnimation(myAnim2)
         }
 
         //start button2 animation
         bounceButton2.setOnClickListener {
-            bounceButton2.startAnimation(myAnim3)
+            //bounceButton2.startAnimation(myAnim3)
             //startContinueAnimation()
             //stop as soon as you press
-            //BounceView.startContinueAnimation(bounceButton2)
+            BounceView.startContinueAnimation(bounceButton2)
         }
 
         // Run button animation again after it finished

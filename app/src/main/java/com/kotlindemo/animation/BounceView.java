@@ -198,6 +198,9 @@ public class BounceView implements BounceViewAnim {
         animY.setDuration(animDuration);
         animY.setInterpolator(interpolator);
 
+        animY.setRepeatCount(ObjectAnimator.INFINITE);
+        animY.setRepeatMode(ObjectAnimator.REVERSE);
+
         animatorSet.playTogether(animX, animY);
         animatorSet.setStartDelay(startDelay);
         animatorSet.start();

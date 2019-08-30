@@ -91,6 +91,7 @@
         android:gravity="center"
         android:padding="10dp"
         android:paddingStart="@dimen/padding"
+        android:stateListAnimator="@xml/animate_scale"
         android:paddingEnd="@dimen/padding"
         android:text="Report SOS"
         android:textAlignment="center"
