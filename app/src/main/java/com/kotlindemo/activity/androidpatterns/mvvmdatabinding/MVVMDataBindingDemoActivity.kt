@@ -8,6 +8,7 @@ import com.kotlindemo.R
 import com.kotlindemo.application.ParentActivity
 import com.kotlindemo.databinding.ActivityMvvmDataBindingBinding
 import com.kotlindemo.utility.ToastManager
+import kotlinx.android.synthetic.main.activity_android_patterns.*
 
 //https://proandroiddev.com/view-model-creation-in-android-android-architecture-components-kotlin-ce9f6b93a46b
 //Codelab: https://codelabs.developers.google.com/codelabs/kotlin-android-training-view-model/#7
@@ -31,6 +32,9 @@ class MVVMDataBindingDemoActivity : ParentActivity(), LoginCallBacks {
             lifecycleOwner = this@MVVMDataBindingDemoActivity
             viewModel = loginViewModel
         }
+
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onSuccess(message: String) {

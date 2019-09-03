@@ -8,7 +8,7 @@ import android.text.TextUtils
 data class LoginModel(var email: String = "", var password: String = "") {
 
     fun isValid(): Boolean {
-        return TextUtils.isEmpty(email) && !TextUtils.isEmpty(password) && password.length > 6
+        return !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password) && password.length > 6
     }
 }
 
