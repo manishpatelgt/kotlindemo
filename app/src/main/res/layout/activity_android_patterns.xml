@@ -65,6 +65,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mvc_button" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mvvm_data_binding_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/button_mvvm_data_binding"
+            android:textColor="@color/white"
+            android:textSize="21sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mvvm_button" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

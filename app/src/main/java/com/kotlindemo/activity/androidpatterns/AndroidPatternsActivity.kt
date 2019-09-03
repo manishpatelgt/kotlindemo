@@ -5,6 +5,7 @@ import com.kotlindemo.R
 import com.kotlindemo.activity.androidpatterns.mvc.view.MVCDemoActivity
 import com.kotlindemo.activity.androidpatterns.mvp.view.MVPDemoActivity
 import com.kotlindemo.activity.androidpatterns.mvvm.QuotesActivity
+import com.kotlindemo.activity.androidpatterns.mvvmdatabinding.MVVMDataBindingDemoActivity
 import com.kotlindemo.application.ParentActivity
 import kotlinx.android.synthetic.main.activity_android_patterns.*
 import org.jetbrains.anko.startActivity
@@ -30,6 +31,10 @@ class AndroidPatternsActivity : ParentActivity() {
 
         mvvm_button.setOnClickListener {
             startActivity<QuotesActivity>()
+        }
+
+        mvvm_data_binding_button.setOnClickListener {
+            startActivity<MVVMDataBindingDemoActivity>()
         }
 
     }

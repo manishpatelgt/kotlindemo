@@ -114,6 +114,11 @@
             android:theme="@style/Theme.MyApp" />
 
         <activity
+            android:name="com.kotlindemo.activity.androidpatterns.mvvmdatabinding.MVVMDataBindingDemoActivity"
+            android:label="@string/mvvm_data_binding_activity_title"
+            android:theme="@style/Theme.MyApp" />
+
+        <activity
             android:name="com.kotlindemo.activity.architecture.ArchitectureActivity"
             android:label="@string/architecture_activity_title"
             android:theme="@style/Theme.MyApp" />

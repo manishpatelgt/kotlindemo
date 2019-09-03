@@ -20,6 +20,7 @@
     <string name="architecture_activity_title">Architecture</string>
     <string name="room_activity_title">Android Room Demo</string>
     <string name="mvvm_activity_title">MVVM Demo</string>
+    <string name="mvvm_data_binding_activity_title">MVVM + Data Binding Demo</string>
     <string name="livedata_activity_title">LiveData Demo</string>
     <string name="lifecycle_activity_title">LifeCycle Demo</string>
     <string name="viewmodel_activity_title">ViewModel + LiveData Demo</string>
@@ -69,6 +70,8 @@
     <string name="button_firebase">Firebase Remote Config</string>
     <string name="button_sql_delight">SQLDelight</string>
     <string name="button_lottie_animation">Lotti Animation</string>
+
+    <string name="button_mvvm_data_binding">MVVM + Data Binding</string>
 
     <string name="button_get_post">Get Posts</string>
     <string name="button_get_movies">Get Movies</string>
