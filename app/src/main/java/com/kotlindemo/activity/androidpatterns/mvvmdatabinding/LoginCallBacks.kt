@@ -6,5 +6,4 @@ package com.kotlindemo.activity.androidpatterns.mvvmdatabinding
 interface LoginCallBacks {
     fun onSuccess(message: String)
     fun onFailure(message: String)
-
 }
