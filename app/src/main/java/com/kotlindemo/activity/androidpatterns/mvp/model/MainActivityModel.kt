@@ -1,7 +1,7 @@
 package com.kotlindemo.activity.androidpatterns.mvp.model
 
-
 import com.kotlindemo.activity.androidpatterns.mvp.contract.ContractInterface.*
+
 /**
  * Created by Manish Patel on 7/2/2019.
  */

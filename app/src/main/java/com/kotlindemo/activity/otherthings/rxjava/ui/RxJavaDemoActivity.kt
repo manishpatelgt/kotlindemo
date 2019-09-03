@@ -52,7 +52,8 @@ class RxJavaDemoActivity : ParentActivity() {
             viewModel.userName()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ this.user_name.text = it },
+                .subscribe({
+                    this.user_name.text = it },
                     { error -> Log.e(TAG, "Unable to get username", error) })
         )
     }
