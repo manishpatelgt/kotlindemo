@@ -36,7 +36,7 @@ class MyTestDemo : ParentActivity() {
         val spannableBuilder = SpannableStringBuilder()
 
         //1st way
-        /*val broadCastTitle = "RAIN INCOMING FROM NORTHWEST INCLUDING"
+        val broadCastTitle = "RAIN INCOMING FROM NORTHWEST INCLUDING"
 
         spannableBuilder.append(broadCastTitle)
         spannableBuilder.setSpan(
@@ -44,7 +44,7 @@ class MyTestDemo : ParentActivity() {
             spannableBuilder.length - broadCastTitle.length,
             spannableBuilder.length,
             Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-        )*/
+        )
 
         //2nd way
         /*val broadCastTitleList = Inject.getBroadcastTitleList()
@@ -92,16 +92,16 @@ class MyTestDemo : ParentActivity() {
             Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
         )*/
 
-        //text_title.text = spannableBuilder.toString()
-
         //4th way
-        text_title.makeLinks(
+        /*text_title.makeLinks(
             Pair("Terms of Service", View.OnClickListener {
                 Toast.makeText(applicationContext, "Terms of Service Clicked", Toast.LENGTH_SHORT).show()
             }),
             Pair("Privacy Policy", View.OnClickListener {
                 Toast.makeText(applicationContext, "Privacy Policy Clicked", Toast.LENGTH_SHORT).show()
-            }))
+            }))*/
+
+        text_title.text = spannableBuilder
 
         //marquee animation
         val marquee = AnimationUtils.loadAnimation(this, R.anim.marquee)
@@ -119,9 +119,12 @@ class MyTestDemo : ParentActivity() {
                 println("Animation Repeat")
             }
 
-            override fun onAnimationEnd(arg0: Animation) {
+            override fun onAnimationEnd(anim: Animation) {
                 Log.e(TAG, "Animation End")
                 println("Animation End")
+                //text_title.text ="testing"
+                //anim.repeatCount = 1
+                //text_title.startAnimation(marquee)
             }
         })
 
