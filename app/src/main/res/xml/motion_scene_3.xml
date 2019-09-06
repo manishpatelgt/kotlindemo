@@ -6,7 +6,7 @@
         motion:duration="1000">
         <OnClick
             motion:clickAction="toggle"
-            motion:target="@+id/view" />
+            motion:motionTarget="@+id/view" />
     </Transition>
 
     <ConstraintSet android:id="@+id/start">

@@ -6,18 +6,18 @@
         motion:duration="1000">
         <OnClick
             motion:clickAction="toggle"
-            motion:target="@+id/imageView" />
+            motion:motionTarget="@+id/imageView" />
 
         <KeyFrameSet>
             <KeyPosition
                 motion:framePosition="50"
                 motion:keyPositionType="parentRelative"
                 motion:percentX="0.25"
-                motion:target="@+id/imageView" />
+                motion:motionTarget="@+id/imageView" />
             <KeyAttribute
                 android:rotation="-45"
                 motion:framePosition="50"
-                motion:target="@id/imageView" />
+                motion:motionTarget="@id/imageView" />
         </KeyFrameSet>
 
     </Transition>

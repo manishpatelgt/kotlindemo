@@ -5,6 +5,6 @@
         motion:duration="1000">
         <OnClick
             motion:clickAction="toggle"
-            motion:target="@+id/imageView" />
+            motion:motionTarget="@+id/imageView" />
     </Transition>
 </MotionScene>

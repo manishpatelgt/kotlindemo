@@ -99,6 +99,11 @@
             android:theme="@style/Theme.MyApp" />
 
         <activity
+            android:name="com.kotlindemo.activity.otherthings.ui.MyTestDemo"
+            android:label="@string/my_test_activity_title"
+            android:theme="@style/Theme.MyApp" />
+
+        <activity
             android:name="com.kotlindemo.activity.otherthings.OtherThingsActivity"
             android:label="@string/other_activity_title"
             android:theme="@style/Theme.MyApp" />

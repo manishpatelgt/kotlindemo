@@ -10,6 +10,7 @@ import com.kotlindemo.activity.otherthings.rxjava.ui.RxJavaDemoActivity
 import com.kotlindemo.activity.otherthings.shimmer.ShimmerDemoActivity
 import com.kotlindemo.activity.otherthings.sqldelight.SQLDelightDemoActivity
 import com.kotlindemo.activity.otherthings.ui.AutoTextViewDemoActivity
+import com.kotlindemo.activity.otherthings.ui.MyTestDemo
 import com.kotlindemo.application.ParentActivity
 import kotlinx.android.synthetic.main.activity_other_things.*
 import org.jetbrains.anko.startActivity
@@ -55,6 +56,10 @@ class OtherThingsActivity : ParentActivity() {
 
         lottie_button.setOnClickListener {
             startActivity<LottieAnimationDemoActivity>()
+        }
+
+        my_test_button.setOnClickListener {
+            startActivity<MyTestDemo>()
         }
     }
 }

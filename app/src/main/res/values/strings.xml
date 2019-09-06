@@ -9,6 +9,7 @@
     <string name="main_activity_title">Kotlin Coroutines + Android Arch Components Demos</string>
     <string name="enter_word_title">Enter Word</string>
 
+    <string name="my_test_activity_title">My Test Demo</string>
     <string name="lottie_activity_title">Lottie Animation Demo</string>
     <string name="shimmer_effect_activity_title">Shimmer Effect Demo</string>
     <string name="sqldelight_activity_title">SQLDelight Demo</string>
@@ -70,6 +71,7 @@
     <string name="button_firebase">Firebase Remote Config</string>
     <string name="button_sql_delight">SQLDelight</string>
     <string name="button_lottie_animation">Lotti Animation</string>
+    <string name="button_my_test">My Test</string>
 
     <string name="button_mvvm_data_binding">MVVM + Data Binding</string>
 
