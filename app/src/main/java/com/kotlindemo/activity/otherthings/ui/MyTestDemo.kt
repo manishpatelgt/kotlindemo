@@ -13,6 +13,13 @@ import android.text.TextPaint
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.method.LinkMovementMethod
+import android.util.Log
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import com.kotlindemo.R
+import com.kotlindemo.activity.MainActivity
+import com.kotlindemo.utility.ToastManager
+import com.kotlindemo.utility.getMarquee
 
 /**
  * Created by Manish Patel on 9/6/2019.
@@ -25,11 +32,12 @@ class MyTestDemo : ParentActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        text_title.highlightColor = Color.TRANSPARENT
         text_title.linksClickable = true
         text_title.isClickable = true
         text_title.movementMethod = LinkMovementMethod.getInstance()
 
-        val broadCastTitle = "Test"
+        val broadCastTitle = "RAIN INCOMING FROM NORTHWEST INCLUDING"
         val spannableBuilder = SpannableStringBuilder()
 
         spannableBuilder.append(broadCastTitle)
@@ -41,6 +49,22 @@ class MyTestDemo : ParentActivity() {
         )
 
         text_title.text = spannableBuilder
+        //marquee animation
+        val marquee = AnimationUtils.loadAnimation(this, R.anim.marquee)
+
+        //marquee AnimationListener
+        marquee.setAnimationListener(object : Animation.AnimationListener {
+            override fun onAnimationStart(arg0: Animation) {}
+            override fun onAnimationRepeat(arg0: Animation) {
+                Log.e(TAG, "Animation End")
+            }
+
+            override fun onAnimationEnd(arg0: Animation) {
+                Log.e(TAG, "Animation End")
+            }
+        })
+
+        text_title.startAnimation(this@MyTestDemo.getMarquee())
 
         //setClickable(textView, subString, {handleClick()})
     }
@@ -49,16 +73,10 @@ class MyTestDemo : ParentActivity() {
     var clickableSpan: ClickableSpan = object : ClickableSpan() {
         override fun onClick(view: View) {
             //what happens when i click
-            Toast.makeText(
-                applicationContext,
-                "you just clicked on a Click Span!",
-                Toast.LENGTH_LONG
-            ).show()
+            ToastManager.getInstance().showToast("you just clicked on a Click Span!")
         }
 
         override fun updateDrawState(textPaint: TextPaint) {
-            textPaint.bgColor = Color.TRANSPARENT
-            //textPaint.color = textPaint.linkColor    // you can use custom color
             textPaint.isUnderlineText = false    // this remove the underline
         }
     }
@@ -103,5 +121,9 @@ class MyTestDemo : ParentActivity() {
                 ds?.isUnderlineText = false
             }
         }
+    }
+
+    companion object {
+        val TAG: String = MyTestDemo.javaClass::class.java.simpleName
     }
 }

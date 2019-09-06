@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
+    <color name="notification_command">#1b2b3c</color>
     <color name="textPrimary">#000000</color>
     <color name="transBlack">#33000000</color>
 

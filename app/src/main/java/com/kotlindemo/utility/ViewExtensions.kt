@@ -56,3 +56,7 @@ fun View.hideKeyboard(): Boolean {
     }
     return false
 }
+
+fun Context.getMarquee(): Animation {
+    return AnimationUtils.loadAnimation(this, R.anim.marquee)!!
+}

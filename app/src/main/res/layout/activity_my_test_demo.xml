@@ -13,17 +13,33 @@
         android:theme="@style/AppTheme.AppBarOverlay"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-    <TextView
-        android:id="@+id/text_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:clickable="true"
-        android:layout_gravity="center_vertical|center"
-        android:gravity="center|center_vertical"
-        android:text="Test"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/notification_command"
+        android:fillViewport="true"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:scrollbars="none">
+
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_vertical|center"
+            android:clickable="true"
+            android:gravity="center|center_vertical"
+            android:maxLines="1"
+            android:paddingLeft="10dp"
+            android:paddingTop="20dp"
+            android:paddingRight="10dp"
+            android:text="Test"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </HorizontalScrollView>
+
 
 </LinearLayout>
