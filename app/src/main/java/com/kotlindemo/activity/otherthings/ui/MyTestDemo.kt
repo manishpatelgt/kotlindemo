@@ -49,6 +49,7 @@ class MyTestDemo : ParentActivity() {
         )
 
         text_title.text = spannableBuilder
+        
         //marquee animation
         val marquee = AnimationUtils.loadAnimation(this, R.anim.marquee)
 
@@ -56,7 +57,7 @@ class MyTestDemo : ParentActivity() {
         marquee.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(arg0: Animation) {}
             override fun onAnimationRepeat(arg0: Animation) {
-                Log.e(TAG, "Animation End")
+                Log.e(TAG, "Animation Repeat")
             }
 
             override fun onAnimationEnd(arg0: Animation) {
@@ -64,7 +65,7 @@ class MyTestDemo : ParentActivity() {
             }
         })
 
-        text_title.startAnimation(this@MyTestDemo.getMarquee())
+        text_title.startAnimation(marquee)
 
         //setClickable(textView, subString, {handleClick()})
     }
