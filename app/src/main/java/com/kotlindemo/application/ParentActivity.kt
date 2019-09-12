@@ -1,15 +1,14 @@
 package com.kotlindemo.application
 
-import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import com.kotlindemo.activity.otherthings.location.Utils
+import com.kotlindemo.fragments.DemoDialogFragment
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import org.slf4j.LoggerFactory
 
-open class ParentActivity : AppCompatActivity() {
+open class ParentActivity : BaseActivity() {
 
     companion object {
         private val logger = LoggerFactory.getLogger(ParentActivity::class.java)

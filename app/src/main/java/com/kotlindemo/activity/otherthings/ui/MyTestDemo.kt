@@ -12,14 +12,20 @@ import android.text.method.LinkMovementMethod
 import android.util.Log
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.Toast
 import com.kotlindemo.R
+import com.kotlindemo.fragments.DemoDialogFragment
 import com.kotlindemo.utility.Inject
 import com.kotlindemo.utility.ToastManager
+import kotlinx.android.synthetic.main.activity_auto_textview.*
+import kotlinx.android.synthetic.main.activity_my_test_demo.toolbar
 
 /**
  * Created by Manish Patel on 9/6/2019.
  */
+//https://professorneurus.wordpress.com/2013/10/23/adding-multiple-clicking-regions-to-an-android-textview/
+//https://blog.stylingandroid.com/the-trouble-with-clickablespan/
+//https://android--examples.blogspot.com/2016/08/android-clickablespan-example.html
+
 class MyTestDemo : ParentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +33,10 @@ class MyTestDemo : ParentActivity() {
         setContentView(R.layout.activity_my_test_demo)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        btn_dialog.setOnClickListener {
+            showDialog()
+        }
 
         text_title.highlightColor = Color.TRANSPARENT
         text_title.linksClickable = true
@@ -36,7 +46,7 @@ class MyTestDemo : ParentActivity() {
         val spannableBuilder = SpannableStringBuilder()
 
         //1st way
-        val broadCastTitle = "RAIN INCOMING FROM NORTHWEST INCLUDING"
+        /*val broadCastTitle = "RAIN INCOMING FROM NORTHWEST INCLUDING"
 
         spannableBuilder.append(broadCastTitle)
         spannableBuilder.setSpan(
@@ -44,10 +54,10 @@ class MyTestDemo : ParentActivity() {
             spannableBuilder.length - broadCastTitle.length,
             spannableBuilder.length,
             Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
+        )*/
 
         //2nd way
-        /*val broadCastTitleList = Inject.getBroadcastTitleList()
+        val broadCastTitleList = Inject.getBroadcastTitleList()
 
         var start = 0
         var end = 0
@@ -58,18 +68,16 @@ class MyTestDemo : ParentActivity() {
             end = start + broadCastTitle.length
 
             if (start < end) {
-                spannableBuilder.append(broadCastTitle)
-
+                spannableBuilder.append("$broadCastTitle  -  ")
                 spannableBuilder.setSpan(
-                    clickableSpan,
+                    MyClickableSpan(broadCastTitle),
                     start,
                     end,
                     Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
                 )
             }
-
             start += broadCastTitle.length
-        }*/
+        }
 
         //3rd way
         //https://stackoverflow.com/questions/19227276/how-can-i-make-several-clickable-parts-of-text-in-textview
@@ -144,11 +152,26 @@ class MyTestDemo : ParentActivity() {
                 }
             }
             val startIndexOfLink = this.text.toString().indexOf(link.first)
-            spannableString.setSpan(clickableSpan, startIndexOfLink, startIndexOfLink + link.first.length,
-                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+            spannableString.setSpan(
+                clickableSpan, startIndexOfLink, startIndexOfLink + link.first.length,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
         }
-        this.movementMethod = LinkMovementMethod.getInstance() // without LinkMovementMethod, link can not click
+        this.movementMethod =
+            LinkMovementMethod.getInstance() // without LinkMovementMethod, link can not click
         this.setText(spannableString, TextView.BufferType.SPANNABLE)
+    }
+
+    private inner class MyClickableSpan constructor(private val mText: String) :
+        ClickableSpan() {
+        override fun onClick(widget: View) {
+            ToastManager.getInstance().showToast("$mText")
+            //mListener.onTagClicked(mText)
+        }
+
+        override fun updateDrawState(textPaint: TextPaint) {
+            textPaint.isUnderlineText = false    // this remove the underline
+        }
     }
 
     //adding click span

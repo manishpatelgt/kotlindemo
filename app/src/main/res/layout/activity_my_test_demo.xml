@@ -42,4 +42,21 @@
     </HorizontalScrollView>
 
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_dialog"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:fontFamily="@font/roboto"
+        android:gravity="center"
+        android:padding="10dp"
+        android:paddingStart="@dimen/padding"
+        android:stateListAnimator="@xml/animate_scale"
+        android:paddingEnd="@dimen/padding"
+        android:text="Open Dialog"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="21sp" />
+
 </LinearLayout>
