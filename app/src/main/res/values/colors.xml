@@ -7,7 +7,7 @@
     <color name="notification_command">#1b2b3c</color>
     <color name="textPrimary">#000000</color>
     <color name="transBlack">#33000000</color>
-
+    <color name="colorViewBackground">#FFFFFF</color>
     <color name="antiquewhite">#FAEBD7</color>
     <color name="antiquewhite1">#FFEFDB</color>
     <color name="antiquewhite3">#CDC0B0</color>

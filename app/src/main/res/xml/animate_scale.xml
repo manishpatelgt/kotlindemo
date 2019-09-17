@@ -13,6 +13,11 @@
                 android:propertyName="scaleY"
                 android:valueTo="1.5"
                 android:valueType="floatType" />
+            <objectAnimator
+                android:duration="@android:integer/config_shortAnimTime"
+                android:propertyName="translationZ"
+                android:valueTo="4dp"
+                android:valueType="floatType" />
         </set>
     </item>
     <!-- the default, non-pressed state; set x and y size to 100% -->
@@ -21,12 +26,20 @@
             <objectAnimator
                 android:duration="@android:integer/config_shortAnimTime"
                 android:propertyName="scaleX"
+                android:startOffset="@android:integer/config_shortAnimTime"
                 android:valueTo="1"
                 android:valueType="floatType" />
             <objectAnimator
                 android:duration="@android:integer/config_shortAnimTime"
                 android:propertyName="scaleY"
+                android:startOffset="@android:integer/config_shortAnimTime"
                 android:valueTo="1"
+                android:valueType="floatType" />
+            <objectAnimator
+                android:duration="@android:integer/config_shortAnimTime"
+                android:propertyName="translationZ"
+                android:startOffset="@android:integer/config_shortAnimTime"
+                android:valueTo="0dp"
                 android:valueType="floatType" />
         </set>
     </item>

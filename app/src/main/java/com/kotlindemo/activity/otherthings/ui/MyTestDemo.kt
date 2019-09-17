@@ -12,6 +12,7 @@ import android.text.method.LinkMovementMethod
 import android.util.Log
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import com.astritveliu.boom.Boom
 import com.kotlindemo.R
 import com.kotlindemo.fragments.DemoDialogFragment
 import com.kotlindemo.utility.Inject
@@ -34,8 +35,10 @@ class MyTestDemo : ParentActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        Boom(btn_report_sos as View)
+
         btn_dialog.setOnClickListener {
-            showDialog()
+            //showDialog()
         }
 
         text_title.highlightColor = Color.TRANSPARENT

@@ -10,10 +10,12 @@ import com.kotlindemo.activity.otherthings.rxjava.ui.RxJavaDemoActivity
 import com.kotlindemo.activity.otherthings.shimmer.ShimmerDemoActivity
 import com.kotlindemo.activity.otherthings.sqldelight.SQLDelightDemoActivity
 import com.kotlindemo.activity.otherthings.ui.AutoTextViewDemoActivity
+import com.kotlindemo.activity.otherthings.ui.BounceAnimationDemoActivity
 import com.kotlindemo.activity.otherthings.ui.MyTestDemo
 import com.kotlindemo.application.ParentActivity
 import kotlinx.android.synthetic.main.activity_other_things.*
 import org.jetbrains.anko.startActivity
+
 /**
  * Created by Manish Patel on 7/18/2019.
  */
@@ -60,6 +62,10 @@ class OtherThingsActivity : ParentActivity() {
 
         my_test_button.setOnClickListener {
             startActivity<MyTestDemo>()
+        }
+
+        bounce_button.setOnClickListener {
+            startActivity<BounceAnimationDemoActivity>()
         }
     }
 }
