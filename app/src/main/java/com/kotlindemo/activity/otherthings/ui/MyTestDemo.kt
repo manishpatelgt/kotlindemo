@@ -1,5 +1,7 @@
 package com.kotlindemo.activity.otherthings.ui
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.graphics.Color
 import android.os.Bundle
 import android.text.*
@@ -10,6 +12,7 @@ import com.kotlindemo.application.ParentActivity
 import kotlinx.android.synthetic.main.activity_my_test_demo.*
 import android.text.method.LinkMovementMethod
 import android.util.Log
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import com.astritveliu.boom.Boom
@@ -29,13 +32,55 @@ import kotlinx.android.synthetic.main.activity_my_test_demo.toolbar
 
 class MyTestDemo : ParentActivity() {
 
+    val DEFAULT_INTERPOLATOR = AccelerateDecelerateInterpolator()
+
+    val POP_OUT_SCALE_X = 1.1f
+    val POP_OUT_SCALE_Y = 1.1f
+    val PUSH_IN_ANIM_DURATION = 200
+    val POP_OUT_ANIM_DURATION = 200
+
+    private var popOutScaleX = POP_OUT_SCALE_X
+    private var popOutScaleY = POP_OUT_SCALE_Y
+    private var pushInAnimDuration = PUSH_IN_ANIM_DURATION
+    private var popOutAnimDuration = POP_OUT_ANIM_DURATION
+
+    private var pushInInterpolator = DEFAULT_INTERPOLATOR
+    private var popOutInterpolator = DEFAULT_INTERPOLATOR
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_test_demo)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        Boom(btn_report_sos as View)
+        //Boom(btn_report_sos as View)
+
+        //bounce animation
+        val bounce_5 = AnimationUtils.loadAnimation(this, R.anim.bounce_5)
+
+        btn_report_sos.setOnClickListener {
+            /*startAnimScale(
+                btn_report_sos,
+                pushInScaleX,
+                pushInScaleY,
+                pushInAnimDuration,
+                pushInInterpolator,
+                0
+            )*/
+
+            startAnimScale(btn_report_sos, popOutScaleX, popOutScaleY, popOutAnimDuration, popOutInterpolator, 0)
+
+            startAnimScale(
+                btn_report_sos,
+                1f,
+                1f,
+                popOutAnimDuration,
+                popOutInterpolator,
+                popOutAnimDuration + 1
+            )
+
+            //btn_report_sos.startAnimation(bounce_5)
+        }
 
         btn_dialog.setOnClickListener {
             //showDialog()
@@ -66,7 +111,7 @@ class MyTestDemo : ParentActivity() {
         var end = 0
 
         for (broadCastTitle in broadCastTitleList) {
-            println("broadCastTitle $broadCastTitle")
+            //println("broadCastTitle $broadCastTitle")
 
             end = start + broadCastTitle.length
 
@@ -230,6 +275,27 @@ class MyTestDemo : ParentActivity() {
             }
         }
     }
+
+
+    private fun startAnimScale(
+        view: View, scaleX: Float, scaleY: Float,
+        animDuration: Int,
+        interpolator: AccelerateDecelerateInterpolator,
+        startDelay: Int
+    ) {
+        val animX = ObjectAnimator.ofFloat(view, "scaleX", scaleX)
+        val animY = ObjectAnimator.ofFloat(view, "scaleY", scaleY)
+        val animatorSet = AnimatorSet()
+        animX.duration = animDuration.toLong()
+        animX.interpolator = interpolator
+        animY.duration = animDuration.toLong()
+        animY.interpolator = interpolator
+
+        animatorSet.playTogether(animX, animY)
+        animatorSet.startDelay = startDelay.toLong()
+        animatorSet.start()
+    }
+
 
     companion object {
         val TAG: String = MyTestDemo.javaClass::class.java.simpleName
