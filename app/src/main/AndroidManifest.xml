@@ -104,6 +104,11 @@
             android:theme="@style/Theme.MyApp" />
 
         <activity
+            android:name="com.kotlindemo.activity.otherthings.ui.SOActivity"
+            android:label="@string/my_test_activity_title"
+            android:theme="@style/Theme.MyApp3" />
+
+        <activity
             android:name="com.kotlindemo.activity.otherthings.ui.BounceAnimationDemoActivity"
             android:label="@string/bounce_animation_activity_title"
             android:theme="@style/Theme.MyApp" />

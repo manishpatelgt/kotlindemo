@@ -12,6 +12,7 @@ import com.kotlindemo.activity.otherthings.sqldelight.SQLDelightDemoActivity
 import com.kotlindemo.activity.otherthings.ui.AutoTextViewDemoActivity
 import com.kotlindemo.activity.otherthings.ui.BounceAnimationDemoActivity
 import com.kotlindemo.activity.otherthings.ui.MyTestDemo
+import com.kotlindemo.activity.otherthings.ui.SOActivity
 import com.kotlindemo.application.ParentActivity
 import kotlinx.android.synthetic.main.activity_other_things.*
 import org.jetbrains.anko.startActivity
@@ -66,6 +67,10 @@ class OtherThingsActivity : ParentActivity() {
 
         bounce_button.setOnClickListener {
             startActivity<BounceAnimationDemoActivity>()
+        }
+
+        so_button.setOnClickListener {
+            startActivity<SOActivity>()
         }
     }
 }

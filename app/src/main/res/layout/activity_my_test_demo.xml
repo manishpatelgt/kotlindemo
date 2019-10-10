@@ -18,6 +18,7 @@
         android:layout_height="100dp"
         android:background="@color/notification_command"
         android:fillViewport="true"
+        android:visibility="invisible"
         android:paddingLeft="0dp"
         android:paddingRight="0dp"
         android:scrollbars="none">

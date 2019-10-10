@@ -59,6 +59,7 @@ class MyTestDemo : ParentActivity() {
         val bounce_5 = AnimationUtils.loadAnimation(this, R.anim.bounce_5)
 
         btn_report_sos.setOnClickListener {
+
             /*startAnimScale(
                 btn_report_sos,
                 pushInScaleX,
@@ -68,7 +69,14 @@ class MyTestDemo : ParentActivity() {
                 0
             )*/
 
-            startAnimScale(btn_report_sos, popOutScaleX, popOutScaleY, popOutAnimDuration, popOutInterpolator, 0)
+            startAnimScale(
+                btn_report_sos,
+                popOutScaleX,
+                popOutScaleY,
+                popOutAnimDuration,
+                popOutInterpolator,
+                0
+            )
 
             startAnimScale(
                 btn_report_sos,

@@ -74,6 +74,7 @@
     <string name="button_lottie_animation">Lotti Animation</string>
     <string name="button_my_test">My Test</string>
     <string name="button_bounce_anim">Bounce Animation</string>
+    <string name="button_so">SO</string>
 
     <string name="button_mvvm_data_binding">MVVM + Data Binding</string>
 
