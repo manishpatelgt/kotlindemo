@@ -2,9 +2,8 @@ package com.kotlindemo.activity.otherthings.location
 
 import android.Manifest
 import android.app.Activity
-import android.content.ComponentName
-import android.content.Intent
-import android.content.ServiceConnection
+import android.content.*
+import android.location.Location
 import android.net.Uri
 import android.os.Bundle
 import android.os.IBinder
@@ -66,6 +65,27 @@ class LocationDemoActivity : ParentActivity() {
             )
         }
 
+        /** GPS service checker **/
+        start_gps_button.setOnClickListener {
+
+            //startScheduler
+            DemoApplication.getInstance().startScheduler()
+
+            if (isAtLeastAndroid8()) {
+                startForegroundService(Intent(applicationContext, GPSService::class.java))
+            } else {
+                startService(Intent(applicationContext, GPSService::class.java))
+            }
+        }
+
+        stop_gps_button.setOnClickListener {
+            stopService(Intent(applicationContext, GPSService::class.java))
+
+            //stopScheduler
+            DemoApplication.getInstance().stopScheduler()
+        }
+
+        /** Fused location service **/
         startButton.setOnClickListener {
             startLocationService()
 
@@ -114,6 +134,18 @@ class LocationDemoActivity : ParentActivity() {
             }
             logger.debug("Starting the service in < 26 Mode")
             startService(it)
+        }
+    }
+
+    fun registerReceivers() {
+        /** Register Update View Broadcast Receiver **/
+        DemoApplication.context.registerReceiver(mLocationUpdateReceiver, IntentFilter(GPSService.LOCATION_RECEIVED))
+    }
+
+    fun unregisterReceivers() {
+        /** Unregister Update View Broadcast Receiver **/
+        mLocationUpdateReceiver?.let {
+            DemoApplication.context.unregisterReceiver(mLocationUpdateReceiver)
         }
     }
 
@@ -184,8 +216,30 @@ class LocationDemoActivity : ParentActivity() {
         }
     }
 
+    private val mLocationUpdateReceiver = object : BroadcastReceiver() {
+        override fun onReceive(contxt: Context?, intent: Intent?) {
+            if (intent != null) {
+                println("inside mLocationUpdateReceiver")
+                val action = intent.action
+                if (GPSService.LOCATION_RECEIVED == action) {
+                    val location = intent.extras[GPSService.INTENT_EXTRA_LOCATION] as Location
+                    if (location != null) {
+                        DemoApplication.currentLocation = location
+                    }
+                }
+            }
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        //unregisterReceivers()
+    }
+
     override fun onResume() {
         super.onResume()
+
+        //registerReceivers()
 
         Dexter.withActivity(this)
             .withPermissions(

@@ -20,6 +20,8 @@
     <!-- Declare features -->
     <uses-feature android:name="android.hardware.camera" />
 
+    <uses-feature android:name="android.hardware.location.gps" />
+
     <application
         android:name=".application.DemoApplication"
         android:allowBackup="true"
@@ -43,6 +45,11 @@
             android:exported="true" />
 
         <service
+            android:name="com.kotlindemo.activity.otherthings.location.GPSService"
+            android:process=":GPSService"
+            android:exported="true" />
+
+        <service
             android:name="com.kotlindemo.activity.otherthings.location.EndlessService"
             android:enabled="true"
             android:exported="false"
@@ -54,6 +61,14 @@
             android:exported="false" />
 
         <!-- BroadcastReceiver -->
+        <receiver
+            android:name="com.kotlindemo.activity.otherthings.location.LocationUpdateReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="fused.location.received" />
+            </intent-filter>
+        </receiver>
+
         <receiver
             android:name="com.kotlindemo.activity.otherthings.location.LocationUpdatesBroadcastReceiver"
             android:exported="true">

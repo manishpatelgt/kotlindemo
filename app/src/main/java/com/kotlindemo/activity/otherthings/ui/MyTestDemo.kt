@@ -95,9 +95,9 @@ class MyTestDemo : ParentActivity() {
         }
 
         text_title.highlightColor = Color.TRANSPARENT
-        text_title.linksClickable = true
+        /*text_title.linksClickable = true
         text_title.isClickable = true
-        text_title.movementMethod = LinkMovementMethod.getInstance()
+        text_title.movementMethod = LinkMovementMethod.getInstance()*/
 
         val spannableBuilder = SpannableStringBuilder()
 
@@ -221,7 +221,7 @@ class MyTestDemo : ParentActivity() {
     private inner class MyClickableSpan constructor(private val mText: String) :
         ClickableSpan() {
         override fun onClick(widget: View) {
-            ToastManager.getInstance().showToast("$mText")
+            //ToastManager.getInstance().showToast("$mText")
             //mListener.onTagClicked(mText)
         }
 

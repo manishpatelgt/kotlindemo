@@ -136,7 +136,10 @@ class DemoApplication : MultiDexApplication(), LifecycleObserver, Application.Ac
 
     val saveHHLocation = Runnable {
         logger.debug("inside saveHHLocation")
-        logger.debug("Location ready to send ${DemoApplication.currentLocation.toString()}")
+        DemoApplication.currentLocation?.let{
+            logger.debug("Location ready to send ${it.toString()}")
+        }
+
     }
 
     private var locationTimerTask: LocationSendTimerTask? = null

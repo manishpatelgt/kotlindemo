@@ -14,45 +14,96 @@
         android:theme="@style/AppTheme.AppBarOverlay"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/startButton"
+    <LinearLayout
+        android:id="@+id/ll_first"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbar"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="10dp"
-        android:fontFamily="@font/roboto"
-        android:gravity="center"
-        android:padding="10dp"
-        android:paddingStart="@dimen/padding"
-        android:paddingEnd="@dimen/padding"
-        android:text="Start Service"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="21sp" />
+        android:visibility="gone"
+        android:orientation="vertical">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/stopButton"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/startButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/roboto"
+            android:gravity="center"
+            android:padding="10dp"
+            android:paddingStart="@dimen/padding"
+            android:paddingEnd="@dimen/padding"
+            android:text="Start Service"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="21sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/stopButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/roboto"
+            android:gravity="center"
+            android:padding="10dp"
+            android:paddingStart="@dimen/padding"
+            android:paddingEnd="@dimen/padding"
+            android:text="Stop Service"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="21sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_second"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/startButton"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="10dp"
-        android:fontFamily="@font/roboto"
-        android:gravity="center"
-        android:padding="10dp"
-        android:paddingStart="@dimen/padding"
-        android:paddingEnd="@dimen/padding"
-        android:text="Stop Service"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="21sp" />
+        android:layout_below="@id/ll_first"
+        android:orientation="vertical">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/start_gps_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/roboto"
+            android:gravity="center"
+            android:padding="10dp"
+            android:paddingStart="@dimen/padding"
+            android:paddingEnd="@dimen/padding"
+            android:text="Start GPS Service"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="21sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/stop_gps_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/startButton"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/roboto"
+            android:gravity="center"
+            android:padding="10dp"
+            android:paddingStart="@dimen/padding"
+            android:paddingEnd="@dimen/padding"
+            android:text="Stop GPS Service"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="21sp" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/statusTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/stopButton"
+        android:layout_below="@id/ll_second"
         android:layout_centerHorizontal="true"
         android:layout_margin="20dp"
         android:text="Status"

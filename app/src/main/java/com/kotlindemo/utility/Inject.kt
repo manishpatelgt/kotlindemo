@@ -10,7 +10,7 @@ import android.content.pm.PackageManager
 object Inject {
 
     fun getBroadcastTitleList(): ArrayList<String> {
-        return arrayListOf("RAIN INCOMING FROM NORTHWEST INCLUDING","Information Alert")
+        return arrayListOf("Emergency at the event area. Marshals please reach fast at desk","RAIN INCOMING FROM NORTHWEST INCLUDING","Information Alert")
     }
 
     var permissionList = emptyArray<String>()
