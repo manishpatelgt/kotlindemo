@@ -1,0 +1,6 @@
+{
+  "messageBody": "{\r\n \"conversationsID\": 346,\r\n \"fromItemType\": \"WebUser\",\r\n \"fromItemId\": 1018,\r\n \"toItemType\": \"Person\",\r\n \"toItemId\": 9847,\r\n \"conversationJson\": \"{\\\"text\\\":\\\"Trying\\\"}\",\r\n \"fileID\": null,\r\n \"fileName\": null,\r\n \"chatID\": \"ea-p9847\",\r\n \"conversationType\": \"Text\",\r\n \"parentChatID\": null,\r\n \"isActive\": true,\r\n \"eventID\": 2232,\r\n \"timeStamp\": 1590635373\r\n}",
+  "messageId": "e17727b4-2e92-4719-aa26-d9a74f114256",
+  "type": "Command",
+  "command": "Conversation"
+}

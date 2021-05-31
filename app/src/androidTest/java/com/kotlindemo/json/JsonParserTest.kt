@@ -1,6 +1,7 @@
 package com.kotlindemo.json
 
 import androidx.test.filters.SmallTest
+import com.beust.klaxon.Json
 import com.beust.klaxon.Klaxon
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
@@ -24,10 +25,10 @@ class JsonParserTest {
     @Test
     fun readAppAsset() {
 
-        val JsonString = context.assets.open("AppConfig.json").bufferedReader().use {
+        /*val JsonString = context.assets.open("AppConfig.json").bufferedReader().use {
             it.readText()
         }
-        println("Json String ${JsonString}")
+        println("Json String ${JsonString}")*/
 
         //var sos: SOS? = Klaxon().parse<SOS>(json_string)
         //assertEquals("main myAsset", json_string)
@@ -43,9 +44,17 @@ class JsonParserTest {
         //val medical: String = Klaxon().toJsonString(sos.Medical)
         //println("medical List: $medical")
 
-        val result = Klaxon().parse<AppConfiguration>(JsonString)
+        /*val result = Klaxon().parse<AppConfiguration>(JsonString)
         println("periodicUpdates: ${result?.periodicUpdates.toString()}")
-        println("Event: ${result?.EventCode.toString()}")
+        println("Event: ${result?.EventCode.toString()}")*/
+
+        val JsonString = context.assets.open("MessageBody.json").bufferedReader().use {
+            it.readText()
+        }
+        println("Json String ${JsonString}")
+
+        val result = Klaxon().parse<ConversationMessageBody>(JsonString)
+        println("conversationBody: $result")
 
         /*val result = Klaxon().parse<SOS>(JsonString)
         println("Medical: ${result?.Medical}")
@@ -104,6 +113,24 @@ class JsonParserTest {
         var loginCode: Boolean = false,
         var nameAndPwd: Boolean = false,
         var selfLogin: Boolean = false
+    )
+
+
+    data class ConversationMessageBody(
+        val conversationsID: Int,
+        val fromItemType: String,
+        val fromItemId: Int = 0,
+        val toItemType: String,
+        val toItemId: Int = 0,
+        val conversationJson: String,
+        val fileID: Int? = null,
+        val fileName: String? = null,
+        val chatID: String,
+        val conversationType: String,
+        val parentChatID: Int? = null,
+        val isActive: Int,
+        val eventID: Int,
+        val timeStamp: Long
     )
 
 }
